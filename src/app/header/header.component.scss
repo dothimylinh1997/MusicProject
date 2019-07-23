@@ -103,6 +103,16 @@ header {
                             }
                         }
                     }
+                    &:nth-child(2) {
+                        .child {
+                            width: 200px;
+                            .cover-child {
+                                .child-1 {
+                                    width: 100%;
+                                }
+                            }
+                        }
+                    }
                     .list-item {
                         text-decoration: none;
                         text-transform: uppercase;
