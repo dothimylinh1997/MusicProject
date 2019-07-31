@@ -1,0 +1,40 @@
+<section id="signup">
+    <div class="container">
+        <div class="form-signup">
+            <h2>Đăng ký</h2>
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" action="">
+                <div class="cover-form">
+                    <div class="cover-input">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+                            </div>
+                            <input type="text" formControlName="email" #email class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+                            </div>
+                            <input type="text" formControlName="fullName" #fullName class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                            </div>
+                            <input type="password" formControlName="password" #password class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                    </div>
+
+                    <div class="cover-button">
+                        <div class="button">
+                            <button type="button" class="btn btn-info" (click)="onSignup()">Đăng ký</button>
+                        </div>
+                        <div class="dangky">
+                            <a href="" [routerLink]="['/login']">Đăng nhập</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

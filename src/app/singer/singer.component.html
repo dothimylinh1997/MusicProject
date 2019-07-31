@@ -1,0 +1,162 @@
+<app-page></app-page>
+<section id="singer">
+    <div class="container">
+        <mat-tab-group>
+            <mat-tab class="tab-title" label="Tất cả">
+                <span class="text">Việt Nam</span>
+                <div class="row tab-content">
+                    <div class="cover-singer">
+                        <div class="row">
+                            <ng-container *ngFor="let singer of singers">
+                                <div class="col-lg-3" *ngIf="singer.nation == 'Việt Nam'">
+                                    <div class="cover-each-singer">
+                                        <div class="avatar">
+                                            <img src="{{singer?.avatar}}" alt="">
+                                        </div>
+                                        <div class="detail">
+                                            <div class="name-singer">
+                                                {{singer?.singerName}}
+                                            </div>
+                                            <!-- <div class="nation">
+                                                {{singer?.nation}} cái thư viên đâu ý là cái traangweb
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+                <span class="text">Âu Mỹ</span>
+                <div class="row tab-content">
+                    <div class="cover-singer">
+                        <div class="row">
+                            <ng-container *ngFor="let singer of singers">
+                                <div class="col-lg-3" *ngIf="singer.nation == 'US-UK'">
+                                    <div class="cover-each-singer">
+                                        <div class="avatar">
+                                            <img src="{{singer?.avatar}}" alt="">
+                                        </div>
+                                        <div class="detail">
+                                            <div class="name-singer">
+                                                {{singer?.singerName}}
+                                            </div>
+                                            <!-- <div class="nation">
+                                                        {{singer?.nation}} cái thư viên đâu ý là cái traangweb
+                                                    </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+                <span class="text">Hàn Quốc</span>
+                <div class="row tab-content">
+                    <div class="cover-singer">
+                        <div class="row">
+                            <ng-container *ngFor="let singer of singers">
+                                <div class="col-lg-3" *ngIf="singer.nation == 'Korean'">
+                                    <div class="cover-each-singer">
+                                        <div class="avatar">
+                                            <img src="{{singer?.avatar}}" alt="">
+                                        </div>
+                                        <div class="detail">
+                                            <div class="name-singer">
+                                                {{singer?.singerName}}
+                                            </div>
+                                            <!-- <div class="nation">
+                                                        {{singer?.nation}} cái thư viên đâu ý là cái traangweb
+                                                    </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab class="tab-title" label="Việt Nam">
+                <span class="text">Việt Nam</span>
+                <div class="row tab-content">
+                    <div class="cover-singer">
+                        <div class="row">
+                            <ng-container *ngFor="let singer of singers">
+                                <div class="col-lg-3" *ngIf="singer.nation == 'Việt Nam'">
+                                    <div class="cover-each-singer">
+                                        <div class="avatar">
+                                            <img src="{{singer?.avatar}}" alt="">
+                                        </div>
+                                        <div class="detail">
+                                            <div class="name-singer">
+                                                {{singer?.singerName}}
+                                            </div>
+                                            <!-- <div class="nation">
+                                                        {{singer?.nation}} cái thư viên đâu ý là cái traangweb
+                                                    </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+
+                </div>
+            </mat-tab>
+            <mat-tab class="tab-title" label="Hàn Quốc">
+                <span class="text">Hàn Quốc</span>
+                <div class="row tab-content">
+                    <div class="cover-singer">
+                        <div class="row">
+                            <ng-container *ngFor="let singer of singers">
+                                <div class="col-lg-3" *ngIf="singer.nation == 'Korean'">
+                                    <div class="cover-each-singer">
+                                        <div class="avatar">
+                                            <img src="{{singer?.avatar}}" alt="">
+                                        </div>
+                                        <div class="detail">
+                                            <div class="name-singer">
+                                                {{singer?.singerName}}
+                                            </div>
+                                            <!-- <div class="nation">
+                                                                {{singer?.nation}} cái thư viên đâu ý là cái traangweb
+                                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+
+                </div>
+            </mat-tab>
+            <mat-tab class="tab-title" label="Âu Mỹ">
+                <span class="text">Âu Mỹ</span>
+                <div class="row tab-content">
+                    <div class="cover-singer">
+                        <div class="row">
+                            <ng-container *ngFor="let singer of singers">
+                                <div class="col-lg-3" *ngIf="singer.nation == 'US-UK'">
+                                    <div class="cover-each-singer">
+                                        <div class="avatar">
+                                            <img src="{{singer?.avatar}}" alt="">
+                                        </div>
+                                        <div class="detail">
+                                            <div class="name-singer">
+                                                {{singer?.singerName}}
+                                            </div>
+                                            <!-- <div class="nation">
+                                                                {{singer?.nation}} cái thư viên đâu ý là cái traangweb
+                                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+
+    </div>
+</section>

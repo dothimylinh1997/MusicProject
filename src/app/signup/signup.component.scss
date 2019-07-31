@@ -1,0 +1,32 @@
+#signup {
+    .form-signup {
+        margin: 30px 200px;
+        padding: 25px;
+        border: 1px solid #cfcfcf;
+        border-radius: 10px;
+        h2 {
+            text-align: center;
+            padding: 30px 0;
+        }
+        .cover-form {
+            text-align: center;
+            .cover-input {
+                width: 100%;
+            }
+            .cover-button {
+                .dangky {
+                    padding-top: 15px;
+                    a {
+                        color: #92929d;
+                    }
+                    &:hover {
+                        a {
+                            text-decoration: none;
+                            color: #65509e;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

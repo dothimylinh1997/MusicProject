@@ -1,0 +1,185 @@
+<app-page></app-page>
+<section id="content-home">
+    <div class="container">
+        <div class="recommend">
+            <h3>Thể loại</h3>
+        </div>
+        <div class="recommend">
+            <h3>Video Music</h3>
+            <div class="coverMusicVideo">
+                <span class="text">Việt Nam</span>
+                <div class="row video">
+                    <ng-container *ngFor="let music of nhac">
+                        <div class="col-lg-3" *ngIf="(music.musicType == 'v-pop' || music.musicType == 'v-dance' || music.musicType == 'v-edm') && music.isVideo == '1'">
+                            <div class="cover-video" (click)="layvideo(music)">
+                                <div class="image">
+                                    <img src="{{music?.image}}" alt="">
+                                </div>
+                                <div class="detail">
+                                    <div class="name-song">
+                                        {{music?.musicName}}
+                                    </div>
+                                    <div class="singer">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+                <span class="text">Âu Mỹ</span>
+                <div class="row video">
+                    <ng-container *ngFor="let music of nhac">
+                        <div class="col-lg-3" *ngIf="(music.musicType == 'us-pop' || music.musicType == 'us-dance' || music.musicType == 'us-edm') && music.isVideo == '1'">
+                            <div class="cover-video" (click)="layvideo(music)">
+                                <div class="image">
+                                    <img src="{{music?.image}}" alt="">
+                                </div>
+                                <div class="detail">
+                                    <div class="name-song">
+                                        {{music?.musicName}}
+                                    </div>
+                                    <div class="singer">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+
+                </div>
+                <span class="text">Hàn Quốc</span>
+                <div class="row video">
+                    <ng-container *ngFor="let music of nhac">
+                        <div class="col-lg-3" *ngIf="(music.musicType == 'k-pop' || music.musicType == 'k-dance' || music.musicType == 'k-edm') && music.isVideo == '1'">
+                            <div class="cover-video" (click)="layvideo(music)">
+                                <div class="image">
+                                    <img src="{{music?.image}}" alt="">
+                                </div>
+                                <div class="detail">
+                                    <div class="name-song">
+                                        {{music?.musicName}}
+                                    </div>
+                                    <div class="singer">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+        <div class="recommend">
+            <h3>Bài hát</h3>
+            <div id="song">
+                <div class="cover-song">
+                    <span class="text">Việt Nam</span>
+                    <div class="row tab-content">
+                        <div class="cover-song">
+                            <div class="row">
+                                <ng-container *ngFor="let music of nhac">
+                                    <div class="col-lg-6 each-song" *ngIf="(music.musicType == 'v-pop' || music.musicType == 'v-dance' || music.musicType == 'v-edm') && music.isVideo == '0'">
+                                        <div class="cover-each-song">
+                                            <div class="image" (click)="laynhac(music)">
+                                                <img src="{{music?.image}}" alt="">
+                                            </div>
+                                            <div class="detail" (click)="laynhac(music)">
+                                                <div class="name-song">
+                                                    {{music?.musicName}}
+                                                </div>
+                                                <div class="singer">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="text">Âu Mỹ</span>
+                    <div class="row tab-content">
+                        <div class="cover-song">
+                            <div class="row">
+                                <ng-container *ngFor="let music of nhac">
+                                    <div class="col-lg-6 each-song" *ngIf="(music.musicType == 'us-pop' || music.musicType == 'us-dance' || music.musicType == 'us-edm') && music.isVideo == '0'">
+                                        <div class="cover-each-song">
+                                            <div class="image" (click)="laynhac(music)">
+                                                <img src="{{music?.image}}" alt="">
+                                            </div>
+                                            <div class="detail" (click)="laynhac(music)">
+                                                <div class="name-song">
+                                                    {{music?.musicName}}
+                                                </div>
+                                                <div class="singer">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+
+                    </div>
+                    <span class="text">Hàn Quốc</span>
+                    <div class="row tab-content">
+                        <div class="cover-song">
+                            <div class="row">
+                                <ng-container *ngFor="let music of nhac">
+                                    <div class="col-lg-6 each-song" *ngIf="(music.musicType == 'k-pop' || music.musicType == 'k-dance' || music.musicType == 'k-edm') && music.isVideo == '0'">
+                                        <div class="cover-each-song">
+                                            <div class="image" (click)="laynhac(music)">
+                                                <img src="{{music?.image}}" alt="">
+                                            </div>
+                                            <div class="detail" (click)="laynhac(music)">
+                                                <div class="name-song">
+                                                    {{music?.musicName}}
+                                                </div>
+                                                <div class="singer">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="recommend">
+            <h3>Nghệ sĩ nổi bật</h3>
+            <div id="singer">
+                <div class="cover-singer">
+                    <!-- <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" config="{'slidesToShow': 4, 'slidesToScroll': 4}"> -->
+                    <div class="row">
+                        <div *ngFor="let singer of singers" class="col-lg-3">
+                            <div class="cover-each-singer">
+                                <div class="avatar">
+                                    <img src="{{singer?.avatar}}" alt="">
+                                </div>
+                                <div class="detail">
+                                    <div class="name-singer">
+                                        {{singer?.singerName}}
+                                    </div>
+                                    <!-- <div class="nation">
+                                {{singer?.nation}} cái thư viên đâu ý là cái traangweb
+                            </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- </ngx-slick-carousel> -->
+                </div>
+            </div>
+
+        </div>
+        <div class="recommend">
+            <h3>Playlist Mix cho bạn</h3>
+        </div>
+    </div>
+</section>
