@@ -16,10 +16,13 @@ header {
                 width: 100px;
                 height: 32px;
             }
+            &:focus {
+                outline: none;
+            }
         }
         .search {
             width: 50%;
-            form {
+            .form-search {
                 width: 100%;
                 display: flex;
                 box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.1);
@@ -62,10 +65,13 @@ header {
             &:hover {
                 cursor: pointer;
             }
+            &:focus {
+                outline: none;
+            }
             .avata {
                 width: 20%;
                 position: absolute;
-                right: 85px;
+                right: 100px;
                 border-radius: 100%;
                 img {
                     width: 80%;
@@ -73,7 +79,18 @@ header {
             }
             .text {
                 position: absolute;
-                right: 0;
+                right: 20px;
+                .account {
+                    right: 0px;
+                    text-transform: capitalize;
+                    font-weight: 500;
+                    &:focus {
+                        outline: none;
+                    }
+                    &:hover {
+                        color: #65509e;
+                    }
+                }
             }
         }
         .menu-main {
@@ -103,16 +120,16 @@ header {
                             }
                         }
                     }
-                    &:nth-child(2) {
-                        .child {
-                            width: 200px;
-                            .cover-child {
-                                .child-1 {
-                                    width: 100%;
-                                }
-                            }
-                        }
-                    }
+                    // &:nth-child(2) {
+                    //     .child {
+                    //         width: 200px;
+                    //         .cover-child {
+                    //             .child-1 {
+                    //                 width: 100%;
+                    //             }
+                    //         }
+                    //     }
+                    // }
                     .list-item {
                         text-decoration: none;
                         text-transform: uppercase;
@@ -162,6 +179,75 @@ header {
                                 }
                             }
                         }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.modal {
+    .modal-dialog {
+        .modal-content {
+            .modal-header {
+                text-align: center;
+                display: block;
+                .close {
+                    display: none;
+                }
+            }
+            .modal-body {
+                .form-login {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+.text {
+    .name {
+        position: relative;
+        text-transform: capitalize;
+        .user {
+            font-weight: 500;
+            left: 80px;
+            &:hover {
+                color: #65509e;
+            }
+        }
+        &:hover {
+            .log-out {
+                display: block;
+            }
+        }
+        .log-out {
+            display: none;
+            position: absolute;
+            width: 230px;
+            height: auto;
+            background: aliceblue;
+            z-index: 10;
+            .top,
+            .bottom,
+            .middle {
+                padding: 15px;
+                text-align: left;
+                i {
+                    font-size: 25px;
+                    padding-right: 15px;
+                    color: #92929d;
+                    font-weight: 400;
+                }
+                span {
+                    color: #92929d;
+                    text-transform: capitalize;
+                    font-weight: 400;
+                }
+                &:hover {
+                    i,
+                    span {
+                        color: #65509e;
                     }
                 }
             }
