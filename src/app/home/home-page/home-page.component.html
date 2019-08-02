@@ -155,10 +155,10 @@
             <h3>Nghệ sĩ nổi bật</h3>
             <div id="singer">
                 <div class="cover-singer">
-                    <!-- <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" config="{'slidesToShow': 4, 'slidesToScroll': 4}"> -->
-                    <div class="row">
-                        <div *ngFor="let singer of singers" class="col-lg-3">
-                            <div class="cover-each-singer">
+
+                    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+                        <div ngxSlickItem *ngFor="let singer of singers">
+                            <div class="cover-each-singer" (click)="onDetails(singer.singerName)">
                                 <div class="avatar">
                                     <img src="{{singer?.avatar}}" alt="">
                                 </div>
@@ -166,20 +166,16 @@
                                     <div class="name-singer">
                                         {{singer?.singerName}}
                                     </div>
-                                    <!-- <div class="nation">
-                                {{singer?.nation}} cái thư viên đâu ý là cái traangweb
-                            </div> -->
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- </ngx-slick-carousel> -->
+                    </ngx-slick-carousel>
+
                 </div>
             </div>
-
         </div>
-        <div class="recommend">
-            <h3>Playlist Mix cho bạn</h3>
-        </div>
+    </div>
+    <div class="recommend">
+        <h3>Playlist Mix cho bạn</h3>
     </div>
 </section>

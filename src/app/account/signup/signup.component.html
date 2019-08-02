@@ -1,40 +1,57 @@
 <section id="signup">
     <div class="container">
-        <div class="form-signup">
-            <h2>Đăng ký</h2>
-            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" action="">
-                <div class="cover-form">
-                    <div class="cover-input">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+        <div class="cover-signup">
+            <div class="form-signup">
+                <h2>Đăng ký</h2>
+                <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" action="">
+                    <div class="cover-form">
+                        <div class="cover-input">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+                                </div>
+                                <input type="text" formControlName="email" name="email" #email class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                             </div>
-                            <input type="text" formControlName="email" #email class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+                            <div class="check" *ngIf="signupForm.controls['email'].errors">
+                                <small class="text-danger" *ngIf="signupForm.controls['email'].errors.required">Email
+                                                is required</small>
+                                <small class="text-danger" *ngIf="signupForm.controls['email'].errors.pattern">Email
+                                                is not match</small>
                             </div>
-                            <input type="text" formControlName="fullName" #fullName class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
-                            </div>
-                            <input type="password" formControlName="password" #password class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                        </div>
-                    </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+                                </div>
+                                <input type="text" formControlName="fullName" name="fullName" #fullName class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
 
-                    <div class="cover-button">
-                        <div class="button">
-                            <button type="button" class="btn btn-info" (click)="onSignup()">Đăng ký</button>
+                            </div>
+                            <div class="check" *ngIf="signupForm.controls['fullName'].errors">
+                                <small class="text-danger" *ngIf="signupForm.controls['fullName'].errors.required">Name is required</small>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                                </div>
+                                <input type="password" formControlName="password" name="password" #password class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+
+                            </div>
+                            <div class="check" *ngIf="signupForm.controls['password'].errors">
+                                <small class="text-danger" *ngIf="signupForm.controls['password'].errors.required">Password is required</small>
+                            </div>
                         </div>
-                        <div class="dangky">
-                            <a href="" [routerLink]="['/login']">Đăng nhập</a>
+
+                        <div class="cover-button">
+                            <div class="button">
+                                <button type="button" class="btn btn-info" [disabled]="!signupForm.valid" (click)="onSignup()">Đăng ký</button>
+                            </div>
+                            <div class="dangky">
+                                <a href="" [routerLink]="['/login']">Đăng nhập</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
+
     </div>
 </section>

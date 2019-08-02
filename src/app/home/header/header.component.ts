@@ -34,6 +34,7 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('email');
     localStorage.removeItem('password');
     localStorage.removeItem('idnhac');
+    localStorage.removeItem('user');
     this.router.navigate(['home']);
     setTimeout(() => {
       document.location.reload(true)

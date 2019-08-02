@@ -1,46 +1,58 @@
 <section id="update">
     <div class="container">
-        <div class="form-update">
-            <h2>Cập nhật tài khoản</h2>
-            <form [formGroup]="updateForm" (ngSubmit)="onSubmit()" action="">
-                <div class="cover-form">
-                    <div class="cover-input">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+        <div class="cover-update">
+            <div class="form-update">
+                <h2>Cập nhật tài khoản</h2>
+                <form [formGroup]="updateForm" (ngSubmit)="onSubmit()" action="">
+                    <div class="cover-form">
+                        <div class="cover-input">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+                                </div>
+                                <input type="text" formControlName="email" #email value="{{gmail}}" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" disabled>
                             </div>
-                            <input type="text" formControlName="email" #email value="{{gmail}}" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" disabled>
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
+                                </div>
+                                <input type="text" formControlName="fullName" name="fullName" #fullName class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{ten}}">
                             </div>
-                            <input type="text" formControlName="fullName" #fullName class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{ten}}">
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                            <!-- <div *ngIf="updateForm.controls['fullName'].errors">
+                                <small class="text-danger" *ngIf="updateForm.controls['fullName'].errors.required">Name is required</small>
+                            </div> -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default"> Old Password</span>
+                                </div>
+                                <input type="password" formControlName="password" name="password" #password class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                             </div>
-                            <input type="password" formControlName="password" #password class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{pass}}">
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Confirm password</span>
+                            <!-- <div *ngIf="updateForm.controls['password'].errors">
+                                <small class="text-danger" *ngIf="updateForm.controls['password'].errors.required">Password is required</small>
+                            </div> -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">New password</span>
+                                </div>
+                                <input type="password" formControlName="newPassword" name="new-password" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                             </div>
-                            <input type="password" formControlName="password" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            <!-- <div *ngIf="updateForm.controls['newPassword'].errors">
+                                <small class="text-danger" *ngIf="updateForm.controls['newPassword'].errors.required">Password is required</small>
+                            </div> -->
                         </div>
-                    </div>
 
-                    <div class="cover-button">
-                        <div class="button">
-                            <button type="button" class="btn btn-info" (click)="onUpdate()">Cập nhật</button>
-                        </div>
-                        <!-- <div class="dangky">
+                        <div class="cover-button">
+                            <div class="button">
+                                <button type="button" class="btn btn-info" [disabled]="!updateForm.valid" (click)="onUpdate()">Cập nhật</button>
+                            </div>
+                            <!-- <div class="dangky">
                             <a href="" [routerLink]="['/login']">Đăng nhập</a>
                         </div> -->
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
+
     </div>
 </section>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from '../../services/users.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -9,7 +9,7 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  constructor(private router: Router, private userService: UsersService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private userService: UsersService) { }
   signupForm: FormGroup;
   ngOnInit() {
     this.signupForm = new FormGroup({
@@ -17,8 +17,24 @@ export class SignupComponent implements OnInit {
       fullName: new FormControl(),
       password: new FormControl()
     });
+    this.buildForm();
   }
+  buildForm(){
+    const emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
 
+    this.signupForm = this.formBuilder.group({
+      email: ['', [
+        Validators.required,
+        Validators.pattern(emailPattern)
+      ]],
+      fullName: ['', [
+        Validators.required
+      ]],
+      password: ['', [
+        Validators.required
+      ]]
+    });
+  }
   onSignup(){
     console.log(this.signupForm.value);
 

@@ -97,6 +97,11 @@
 #song {
     padding: 40px 20px;
     .cover-song {
+        padding: 30px 0;
+        .text {
+            text-transform: uppercase !important;
+            font-weight: 600;
+        }
         .each-song {
             padding: 5px 10px;
             .cover-each-song {
@@ -136,6 +141,45 @@
 #singer {
     padding: 40px 0;
     .cover-singer {
+        .carousel {
+            .slick-prev {
+                left: 10px;
+                z-index: 10;
+                width: 55px;
+                height: 55px;
+                top: 45%;
+                &::before {
+                    font-size: 50px;
+                }
+                &:hover {
+                    &::before {
+                        color: #65509e;
+                    }
+                }
+            }
+            .slick-next {
+                right: 10px;
+                width: 55px;
+                height: 55px;
+                top: 45%;
+                &::before {
+                    font-size: 50px;
+                }
+                &:hover {
+                    &::before {
+                        color: #65509e;
+                    }
+                }
+            }
+            .slick-list {
+                padding-top: 20px;
+                .slick-slide {
+                    &:focus {
+                        outline: 0;
+                    }
+                }
+            }
+        }
         .cover-each-singer {
             .avatar {
                 width: 90%;

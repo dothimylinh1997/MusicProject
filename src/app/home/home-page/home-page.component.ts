@@ -13,8 +13,9 @@ export class HomePageComponent implements OnInit {
 
   nhac;
   baihat:any;
-  slideConfig;
+  
   singers;
+  slideConfig = { 'slidesToShow': 4, 'slidesToScroll': 4, 'dots': true };
   constructor(private router: Router, private MusicSV: MusicsService, private singerService: SingerService) { }
 
   ngOnInit() {
@@ -37,5 +38,8 @@ export class HomePageComponent implements OnInit {
     console.log(nhac);
     localStorage.setItem('idnhac', JSON.stringify(nhac));
     this.router.navigate(['/video-detail']);
+  }
+  onDetails(singerName){
+    this.router.navigate([`/singer-detail/${singerName}`]);
   }
 }

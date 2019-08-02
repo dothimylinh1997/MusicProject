@@ -233,6 +233,9 @@ header {
             .middle {
                 padding: 15px;
                 text-align: left;
+                &:focus {
+                    outline: none;
+                }
                 i {
                     font-size: 25px;
                     padding-right: 15px;

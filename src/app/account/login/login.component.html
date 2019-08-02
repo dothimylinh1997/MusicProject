@@ -1,37 +1,50 @@
 <section id="login">
     <div class="container">
-        <div class="form-login">
-            <h2>Đăng nhập</h2>
-            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" action="">
-                <div class="cover-form">
-                    <div class="cover-input">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">User name</span>
-                            </div>
-                            <input type="text" formControlName="email" #email class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required="">
+        <div class="cover-login">
+            <div class="form-login">
+                <h2>Đăng nhập</h2>
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" action="">
+                    <div class="cover-form">
+                        <div class="cover-input">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">User name</span>
+                                </div>
+                                <input type="text" formControlName="email" name="email" #email class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required="">
 
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
                             </div>
-                            <input type="password" formControlName="password" #password class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            <div *ngIf="loginForm.controls['email'].errors">
+                                <small class="text-danger" *ngIf="loginForm.controls['email'].errors.required">Email
+                                            is required</small>
+                                <small class="text-danger" *ngIf="loginForm.controls['email'].errors.pattern">Email
+                                            is not match</small>
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                                </div>
+                                <input type="password" formControlName="password" name="password" #password class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+
+                            </div>
+                            <div *ngIf="loginForm.controls['password'].errors">
+                                <small class="text-danger" *ngIf="loginForm.controls['password'].errors.required">Password is required</small>
+                            </div>
+                        </div>
+
+                        <div class="cover-button">
+                            <div class="button">
+                                <button type="button" class="btn btn-info" [disabled]="!loginForm.valid" (click)="onLogin()">Đăng nhập</button>
+                            </div>
+                            <div class="dangky">
+                                <a href="" [routerLink]="['/signup']">Đăng ký</a>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="cover-button">
-                        <div class="button">
-                            <button type="button" class="btn btn-info" (click)="onLogin()">Đăng nhập</button>
-                        </div>
-                        <div class="dangky">
-                            <a href="" [routerLink]="['/signup']">Đăng ký</a>
-                        </div>
-                    </div>
-                </div>
 
-
-            </form>
+                </form>
+            </div>
         </div>
+
     </div>
 </section>

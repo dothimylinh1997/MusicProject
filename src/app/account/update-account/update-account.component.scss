@@ -1,32 +1,45 @@
 #update {
-    .form-update {
-        margin: 30px 200px;
-        padding: 25px;
-        border: 1px solid #cfcfcf;
-        border-radius: 10px;
-        h2 {
-            text-align: center;
-            padding: 30px 0;
-        }
-        .cover-form {
-            text-align: center;
-            .cover-input {
-                width: 100%;
+    background-image: linear-gradient( 45deg, rgba(0, 0, 0, 0.8) 40%, rgba(45, 95, 93, 0.85)), url("./../../../assets/backgound/maxresdefault-2-1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    .cover-update {
+        padding: 50px 0;
+        .form-update {
+            margin: 0px 250px;
+            padding: 25px;
+            border: 1px solid #cfcfcf;
+            border-radius: 10px;
+            h2 {
+                text-align: center;
+                padding: 30px 0;
+                color: #cfcfcf;
             }
-            .cover-button {
-                .dangky {
-                    padding-top: 15px;
-                    a {
-                        color: #92929d;
-                    }
-                    &:hover {
+            .cover-form {
+                text-align: center;
+                .cover-input {
+                    width: 100%;
+                }
+                .cover-button {
+                    padding-top: 20px;
+                    .dangky {
+                        padding-top: 15px;
                         a {
-                            text-decoration: none;
-                            color: #65509e;
+                            color: #92929d;
+                        }
+                        &:hover {
+                            a {
+                                text-decoration: none;
+                                color: #65509e;
+                            }
                         }
                     }
                 }
             }
         }
     }
+}
+
+.mb-3 {
+    margin-top: 1rem!important;
+    margin-bottom: 0 !important;
 }
