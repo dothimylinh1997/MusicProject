@@ -5,21 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PageComponent } from './page/page.component';
 import { HttpClientModule } from '@angular/common/http';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './home/header/header.component';
+import { FooterComponent } from './home/footer/footer.component';
 import { VideoComponent } from './video/video.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './account/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SignupComponent } from './signup/signup.component';
+import { SignupComponent } from './account/signup/signup.component';
 import { VideoDetailComponent } from './video-detail/video-detail.component';
-import { HomePageComponent } from './home-page/home-page.component';
+import { HomePageComponent } from './home/home-page/home-page.component';
 import { SingerComponent } from './singer/singer.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { SongComponent } from './song/song.component';
 import { SongDetailComponent } from './song-detail/song-detail.component';
+import { UpdateAccountComponent } from './account/update-account/update-account.component';
+import { SingerDetailComponent } from './singer-detail/singer-detail.component';
+import { PlaylistComponent } from './account/playlist/playlist.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { SongDetailComponent } from './song-detail/song-detail.component';
     HomePageComponent,
     SingerComponent,
     SongComponent,
-    SongDetailComponent
+    SongDetailComponent,
+    UpdateAccountComponent,
+    SingerDetailComponent,
+    PlaylistComponent
   ],
   imports: [
     BrowserModule,

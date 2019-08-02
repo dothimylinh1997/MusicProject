@@ -27,7 +27,7 @@
             box-shadow: 0px 0px 23px 0px rgb(216, 216, 216);
             padding: 10px;
             position: relative;
-            transition: all 0.3s;
+            transition: all 0.5s;
             &:hover {
                 cursor: pointer;
                 width: 100%;
@@ -145,7 +145,7 @@
                     width: 100%;
                     height: auto;
                     border-radius: 100%;
-                    transition: transform .2s;
+                    transition: transform .8s;
                 }
                 &:hover {
                     img {

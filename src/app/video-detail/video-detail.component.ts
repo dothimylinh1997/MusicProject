@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef} from '@angular/core';
-import { MusicsService } from '../service/musics.service';
+import { MusicsService } from '../services/musics.service';
 import { JsonPipe } from '@angular/common';
 
 @Component({

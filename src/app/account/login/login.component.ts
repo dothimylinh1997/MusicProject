@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
-import { UsersService } from '../service/users.service';
+import { UsersService } from './../../services/users.service';
 import { FormGroup, FormControl } from '@angular/forms';
 
 // export let browserRefresh = false;
@@ -27,16 +27,15 @@ export class LoginComponent implements OnInit {
       console.log(response);
 
       if (response) {
-        localStorage.setItem('user', JSON.stringify(response.fullName));
+        localStorage.setItem('user', JSON.stringify(response));
+        localStorage.setItem('fullName', JSON.stringify(response.fullName));
+        
+        localStorage.setItem('email', JSON.stringify(response.email));
+        localStorage.setItem('password', JSON.stringify(response.password));
         this.router.navigate(['home']);
         setTimeout(()=>{
         document.location.reload(true)
         },100)
-      //   this.router.events.subscribe((event) => {
-      //     if (event instanceof NavigationStart) {
-      //       browserRefresh = !this.router.navigated;
-      //     }
-      // });
       }
     }, err => {
       if (err) {

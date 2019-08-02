@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MusicsService } from '../service/musics.service';
+import { MusicsService } from '../../services/musics.service';
 
 @Component({
   selector: 'app-footer',

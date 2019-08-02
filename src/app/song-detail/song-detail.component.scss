@@ -24,6 +24,25 @@
                     img {
                         width: 100%;
                         height: auto;
+                        transition: transform .8s;
+                    }
+                    &:hover {
+                        img {
+                            -ms-transform: scale(1.1);
+                            /* IE 9 */
+                            -webkit-transform: scale(1.1);
+                            /* Safari 3-8 */
+                            transform: scale(1.1);
+                        }
+                    }
+                }
+                .detail {
+                    position: absolute;
+                    left: 25%;
+                    top: 20%;
+                    .name-song,
+                    .type {
+                        color: #fff;
                     }
                 }
             }

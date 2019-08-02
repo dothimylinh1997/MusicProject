@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { SingerService } from '../service/singer.service';
+import { SingerService } from '../services/singer.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -20,6 +20,9 @@ export class SingerComponent implements OnInit {
       this.singers = data;
       console.log(data);
     });
+  }
+  onDetails(singerName){
+    this.router.navigate([`/singer-detail/${singerName}`]);
   }
   // slideConfig = {
   //   "slidesToShow": 4, 

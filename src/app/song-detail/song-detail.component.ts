@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MusicsService } from '../service/musics.service';
+import { MusicsService } from '../services/musics.service';
 
 @Component({
   selector: 'app-song-detail',
@@ -15,8 +15,7 @@ export class SongDetailComponent implements OnInit {
     // console.log('AfterViewInit');
   }
   ngOnInit() {
-    this.nhac=JSON.parse(`${localStorage.getItem('idnhac')}`);
-    
+     this.nhac=JSON.parse(`${localStorage.getItem('idnhac')}`);
   }
 
 }

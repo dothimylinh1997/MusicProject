@@ -97,8 +97,11 @@
                             </div>
                         </div>
                     </li>
-                    <li class="menu-parents">
-                        <a href="#" class="list-item">Nhạc cá nhân</a>
+                    <li class="menu-parents" *ngIf="ten">
+                        <a href="" [routerLink]="['/playlist']" class="list-item">Nhạc cá nhân</a>
+                    </li>
+                    <li class="menu-parents" *ngIf="!ten">
+                        <a href="" [routerLink]="['/login']" class="list-item">Nhạc cá nhân</a>
                     </li>
                 </ul>
             </div>
@@ -119,18 +122,18 @@
                     <div class="user">
                         {{ten}}
                     </div>
-                    <div class="log-out" (click)="onLogout()">
+                    <div class="log-out">
                         <div class="top">
                             <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                             <span>Nhạc cá nhân</span>
 
                         </div>
-                        <div class="middle">
+                        <div class="middle" [routerLink]="['/update-account']" (click)="layuser(user)">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                             <span>Thông tin cá nhân</span>
 
                         </div>
-                        <div class="bottom">
+                        <div class="bottom" (click)="onLogout()">
                             <i class="fa fa-sign-out" aria-hidden="true"></i>
                             <span>Đăng xuất</span>
                         </div>

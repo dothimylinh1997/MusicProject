@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UsersService } from '../service/users.service';
+import { UsersService } from '../../services/users.service';
 import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
@@ -9,7 +9,6 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-
   constructor(private router: Router, private userService: UsersService) { }
   signupForm: FormGroup;
   ngOnInit() {
@@ -17,7 +16,7 @@ export class SignupComponent implements OnInit {
       email: new FormControl(),
       fullName: new FormControl(),
       password: new FormControl()
-    })
+    });
   }
 
   onSignup(){

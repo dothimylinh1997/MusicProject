@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MusicsService } from '../service/musics.service';
+import { MusicsService } from '../services/musics.service';
 
 @Component({
   selector: 'app-page',
@@ -11,11 +11,11 @@ export class PageComponent implements OnInit {
   constructor(private musicsService: MusicsService) { }
   baihat
   ngOnInit() {
-    this.musicsService.getMusicsById('5d3565aba4bc73122cc97486').subscribe((data:any) => {
-      // console.log(data);
-      this.baihat = `localhost:5000${data.linkMusic}`
+    // this.musicsService.getMusicsById('5d3565aba4bc73122cc97486').subscribe((data:any) => {
+       // console.log(data);
+    //   this.baihat = `localhost:5000${data.linkMusic}`
       
-    })
+    // })
     // this.musicsService.getMusics().subscribe((data) => {
     //   console.log(data);
      

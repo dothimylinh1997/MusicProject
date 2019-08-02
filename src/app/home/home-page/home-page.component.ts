@@ -1,6 +1,6 @@
 import { Component, OnInit,ViewEncapsulation } from '@angular/core';
-import { MusicsService } from '../service/musics.service';
-import { SingerService } from '../service/singer.service';
+import { MusicsService } from '../../services/musics.service';
+import { SingerService } from '../../services/singer.service';
 import { Router } from '@angular/router';
 
 @Component({

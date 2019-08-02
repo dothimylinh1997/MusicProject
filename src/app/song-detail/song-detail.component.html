@@ -8,6 +8,11 @@
                     <div class="small-image">
                         <img src="{{nhac?.image}}" alt="">
                     </div>
+                    <div class="detail">
+                        <h3 class="name-song">{{nhac?.musicName}}</h3>
+                        <h5 class="singer-name"></h5>
+                        <h4 class="type">Thể loại : {{nhac?.musicType}}</h4>
+                    </div>
                 </div>
             </div>
             <audio controls autoplay>
@@ -15,6 +20,8 @@
                 Your browser does not support the audio element.
             </audio>
         </div>
-
+        <div class="lyrics">
+            {{nhac?.lyrics}}
+        </div>
     </div>
 </section>

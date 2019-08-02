@@ -1,6 +1,15 @@
 <section id="video-detail">
-    <video width="400" controls autoplay>
-        <source   src="{{nhac?.linkMusic}}" type="video/mp4" >
-        Your browser does not support HTML5 video.
-      </video>
+    <div class="container">
+        <div class="cover-vide-detail">
+            <video width="100%" controls autoplay>
+                <source   src="{{nhac?.linkMusic}}" type="video/mp4" >
+                Your browser does not support HTML5 video.
+              </video>
+
+        </div>
+        <div class="lyrics">
+            {{nhac?.lyrics}}
+        </div>
+    </div>
+
 </section>

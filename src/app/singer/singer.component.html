@@ -9,7 +9,7 @@
                         <div class="row">
                             <ng-container *ngFor="let singer of singers">
                                 <div class="col-lg-3" *ngIf="singer.nation == 'Việt Nam'">
-                                    <div class="cover-each-singer">
+                                    <div class="cover-each-singer" (click)="onDetails(singer.singerName)">
                                         <div class="avatar">
                                             <img src="{{singer?.avatar}}" alt="">
                                         </div>
@@ -33,7 +33,7 @@
                         <div class="row">
                             <ng-container *ngFor="let singer of singers">
                                 <div class="col-lg-3" *ngIf="singer.nation == 'US-UK'">
-                                    <div class="cover-each-singer">
+                                    <div class="cover-each-singer" (click)="onDetails(singer.singerName)">
                                         <div class="avatar">
                                             <img src="{{singer?.avatar}}" alt="">
                                         </div>
@@ -57,7 +57,7 @@
                         <div class="row">
                             <ng-container *ngFor="let singer of singers">
                                 <div class="col-lg-3" *ngIf="singer.nation == 'Korean'">
-                                    <div class="cover-each-singer">
+                                    <div class="cover-each-singer" (click)="onDetails(singer.singerName)">
                                         <div class="avatar">
                                             <img src="{{singer?.avatar}}" alt="">
                                         </div>
@@ -83,7 +83,7 @@
                         <div class="row">
                             <ng-container *ngFor="let singer of singers">
                                 <div class="col-lg-3" *ngIf="singer.nation == 'Việt Nam'">
-                                    <div class="cover-each-singer">
+                                    <div class="cover-each-singer" (click)="onDetails(singer.singerName)">
                                         <div class="avatar">
                                             <img src="{{singer?.avatar}}" alt="">
                                         </div>
@@ -110,7 +110,7 @@
                         <div class="row">
                             <ng-container *ngFor="let singer of singers">
                                 <div class="col-lg-3" *ngIf="singer.nation == 'Korean'">
-                                    <div class="cover-each-singer">
+                                    <div class="cover-each-singer" (click)="onDetails(singer.singerName)">
                                         <div class="avatar">
                                             <img src="{{singer?.avatar}}" alt="">
                                         </div>
@@ -137,7 +137,7 @@
                         <div class="row">
                             <ng-container *ngFor="let singer of singers">
                                 <div class="col-lg-3" *ngIf="singer.nation == 'US-UK'">
-                                    <div class="cover-each-singer">
+                                    <div class="cover-each-singer" (click)="onDetails(singer.singerName)">
                                         <div class="avatar">
                                             <img src="{{singer?.avatar}}" alt="">
                                         </div>
