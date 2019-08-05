@@ -12,6 +12,9 @@ import { SingerComponent } from './singer/singer.component';
 import { UpdateAccountComponent } from './account/update-account/update-account.component';
 import { SingerDetailComponent } from './singer-detail/singer-detail.component';
 import { PlaylistComponent } from './account/playlist/playlist.component';
+import { AdminComponent } from './admin/admin.component';
+import { TypeComponent } from './type/type.component';
+import { TypeDetailComponent } from './type-detail/type-detail.component';
 
 
 const routes: Routes = [
@@ -20,13 +23,16 @@ const routes: Routes = [
   { path: 'video', component: VideoComponent},
   { path: 'login', component: LoginComponent},
   { path: 'signup', component: SignupComponent},
-  { path: 'video-detail', component: VideoDetailComponent},
+  { path: 'video-detail/:id', component: VideoDetailComponent},
   { path: 'song', component: SongComponent},
-  { path: 'song-detail', component: SongDetailComponent},
+  { path: 'song-detail/:id', component: SongDetailComponent},
   { path: 'singer', component: SingerComponent},
   { path: 'update-account', component: UpdateAccountComponent},
-  { path: 'singer-detail/:singerName', component: SingerDetailComponent},
-  { path: 'playlist', component: PlaylistComponent}
+  { path: 'singer-detail/:_id', component: SingerDetailComponent},
+  { path: 'playlist', component: PlaylistComponent},
+  { path: 'admin', component: AdminComponent},
+  { path: 'type', component: TypeComponent},
+  { path: 'type-detail/:id', component: TypeDetailComponent}
 ];
 
 @NgModule({

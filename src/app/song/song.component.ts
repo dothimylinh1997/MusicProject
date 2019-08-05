@@ -9,19 +9,21 @@ import { Router } from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class SongComponent implements OnInit {
-  nhac;
+  nhac
   baihat:any
   constructor(private router: Router, private MusicSV: MusicsService) { }
 
   ngOnInit() {
     this.MusicSV.getMusics().subscribe(data => {
       this.nhac = data;
-      console.log(data);
+      console.log(this.nhac);
     })
   }
-  laynhac(nhac) {
-    console.log(nhac);
-    localStorage.setItem('idnhac', JSON.stringify(nhac));
-    this.router.navigate(['/song-detail']);
+  laynhac(music) {
+    this.MusicSV.getMusicsById(music._id).subscribe((dataMusic)=>{
+      if(dataMusic){
+        this.router.navigate(['/song-detail', dataMusic['_id']]);
+      }
+    })
   }
 }

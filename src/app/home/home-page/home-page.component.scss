@@ -116,6 +116,11 @@
                             color: #6e55b4;
                         }
                     }
+                    .singer {
+                        .singer-name {
+                            color: #6e55b4;
+                        }
+                    }
                 }
                 width: 100%;
                 display: flex;
@@ -127,10 +132,20 @@
                     }
                 }
                 .detail {
-                    width: 50%;
+                    width: 70%;
+                    padding-left: 20px;
                     .name-song {
-                        padding: 10px;
                         font-weight: 500;
+                    }
+                    .singer {
+                        .singer-name {
+                            color: #a0a0a0;
+                        }
+                        &:hover {
+                            .singer-name {
+                                color: #6e55b4;
+                            }
+                        }
                     }
                 }
             }
@@ -182,8 +197,87 @@
         }
         .cover-each-singer {
             .avatar {
-                width: 90%;
-                height: 90%;
+                width: 80%;
+                height: 80%;
+                margin: auto;
+                img {
+                    width: 100%;
+                    height: auto;
+                    border-radius: 100%;
+                    transition: transform .8s;
+                }
+                &:hover {
+                    img {
+                        -ms-transform: scale(1.1);
+                        /* IE 9 */
+                        -webkit-transform: scale(1.1);
+                        /* Safari 3-8 */
+                        transform: scale(1.1);
+                    }
+                }
+            }
+            .detail {
+                text-align: center;
+                margin-top: 15px;
+                .name-singer {
+                    font-size: 16px;
+                    font-weight: 600;
+                    &:hover {
+                        color: #65509e;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#type-home {
+    padding: 40px 0;
+    .cover-type {
+        .carousel {
+            .slick-prev {
+                left: 10px;
+                z-index: 10;
+                width: 55px;
+                height: 55px;
+                top: 45%;
+                &::before {
+                    font-size: 50px;
+                }
+                &:hover {
+                    &::before {
+                        color: #65509e;
+                    }
+                }
+            }
+            .slick-next {
+                right: 10px;
+                width: 55px;
+                height: 55px;
+                top: 45%;
+                &::before {
+                    font-size: 50px;
+                }
+                &:hover {
+                    &::before {
+                        color: #65509e;
+                    }
+                }
+            }
+            .slick-list {
+                padding-top: 20px;
+                .slick-slide {
+                    &:focus {
+                        outline: 0;
+                    }
+                }
+            }
+        }
+        .cover-each-type {
+            .image {
+                width: 80%;
+                height: 80%;
                 margin: auto;
                 img {
                     width: 100%;

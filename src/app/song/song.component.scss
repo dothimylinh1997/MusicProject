@@ -1,6 +1,7 @@
 #song {
     padding: 40px 0;
     .cover-song {
+        width: 100%;
         .row {
             margin: 0;
         }
@@ -30,10 +31,15 @@
                     }
                 }
                 .detail {
-                    width: 50%;
+                    width: 70%;
+                    padding-left: 20px;
                     .name-song {
-                        padding: 10px;
                         font-weight: 500;
+                    }
+                    .singer {
+                        .singer-name {
+                            color: #a0a0a0;
+                        }
                     }
                 }
             }

@@ -3,81 +3,84 @@
     .container {
         background-color: #fff;
         padding: 0;
-        .cover-video {
-            box-shadow: 0px 0px 23px 0px rgb(216, 216, 216);
-            padding: 10px;
-            position: relative;
-            transition: all 0.5s;
-            &:hover {
-                cursor: pointer;
-                width: 100%;
-                height: 100%;
-                transform: translateY(-10px);
-                box-shadow: 0px 9px 32px -1px rgba(0, 0, 0, 0.2);
-                .image {
-                    opacity: 0.7;
-                }
-            }
-            .image {
-                width: 235px;
-                height: 140px;
-                img {
+        .cover-content-video {
+            padding: 40px 0;
+            .cover-video {
+                box-shadow: 0px 0px 23px 0px rgb(216, 216, 216);
+                padding: 10px;
+                position: relative;
+                transition: all 0.5s;
+                &:hover {
+                    cursor: pointer;
                     width: 100%;
                     height: 100%;
+                    transform: translateY(-10px);
+                    box-shadow: 0px 9px 32px -1px rgba(0, 0, 0, 0.2);
+                    .image {
+                        opacity: 0.7;
+                    }
+                }
+                .image {
+                    width: 235px;
+                    height: 140px;
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .detail {
+                    .name-song {
+                        font-size: 16px;
+                        font-weight: 500;
+                        color: #32323d;
+                        display: -webkit-box;
+                        -webkit-line-clamp: 2;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                        line-height: 1.56;
+                        margin: 8px 0 5px;
+                        text-transform: capitalize;
+                        &:hover {
+                            color: #6e55b4;
+                        }
+                    }
+                    .singer {
+                        display: inline-block;
+                        font-size: 14px;
+                        font-weight: 400;
+                        line-height: 1.36;
+                        color: #a0a0a0;
+                        padding: 0;
+                        width: 210px;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        &:hover {
+                            color: #6e55b4;
+                        }
+                    }
                 }
             }
         }
-    }
-    .text {
-        text-transform: uppercase !important;
-        font-weight: 600;
-    }
-    .tab-content {
-        padding: 20px 0 40px 0;
-        display: flex;
-    }
-    .tab-title {
-        padding-top: 30px !important;
-    }
-    .mat-tab-label-content {
-        text-transform: uppercase !important;
-        font-weight: 500 !important;
-    }
-    .mat-tab-body-content {
-        padding-top: 30px !important;
-        padding-left: 15px !important;
-        padding-right: 15px !important;
-    }
-    .detail {
-        .name-song {
-            font-size: 16px;
-            font-weight: 500;
-            color: #32323d;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            line-height: 1.56;
-            margin: 8px 0 5px;
-            text-transform: capitalize;
-            &:hover {
-                color: #6e55b4;
-            }
+        .text {
+            text-transform: uppercase !important;
+            font-weight: 600;
         }
-        .singer {
-            display: inline-block;
-            font-size: 14px;
-            font-weight: 400;
-            line-height: 1.36;
-            color: #a0a0a0;
-            padding: 0;
-            width: 210px;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            &:hover {
-                color: #6e55b4;
-            }
+        .tab-content {
+            padding: 20px 0 40px 0;
+            display: flex;
+        }
+        .tab-title {
+            padding-top: 30px !important;
+        }
+        .mat-tab-label-content {
+            text-transform: uppercase !important;
+            font-weight: 500 !important;
+        }
+        .mat-tab-body-content {
+            padding-top: 30px !important;
+            padding-left: 15px !important;
+            padding-right: 15px !important;
         }
     }
 }

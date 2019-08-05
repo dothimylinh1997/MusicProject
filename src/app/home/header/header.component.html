@@ -8,10 +8,10 @@
             <div id="menu">
                 <ul class="list-menu">
                     <li class="menu-parents">
-                        <a href="" class="list-item" [routerLink]="['/home']">Trang chủ</a>
+                        <a href="" class="list-item" [routerLink]="['/home']" routerLinkActive="active-menu">Trang chủ</a>
                     </li>
                     <li class="menu-parents">
-                        <a href="" class="list-item">Thể loại</a>
+                        <a href="" class="list-item" [routerLink]="['/type']" routerLinkActive="active-menu">Thể loại</a>
                         <div class="child">
                             <div class="cover-child">
                                 <div class="child-1">
@@ -36,7 +36,7 @@
                         </div>
                     </li>
                     <li class="menu-parents">
-                        <a href="" class="list-item" [routerLink]="['/video']">Music Video</a>
+                        <a href="" class="list-item" [routerLink]="['/video']" routerLinkActive="active-menu">Music Video</a>
                         <div class="child">
                             <div class="cover-child">
                                 <div class="child-1">
@@ -61,7 +61,7 @@
                         </div>
                     </li>
                     <li class="menu-parents">
-                        <a href="" class="list-item" [routerLink]="['/song']">Bài hát</a>
+                        <a href="" class="list-item" [routerLink]="['/song']" routerLinkActive="active-menu">Bài hát</a>
                         <div class="child">
                             <div class="cover-child">
                                 <div class="child-1">
@@ -86,7 +86,7 @@
                         </div>
                     </li>
                     <li class="menu-parents">
-                        <a href="#" class="list-item" [routerLink]="['/singer']">Nghệ sĩ</a>
+                        <a href="#" class="list-item" [routerLink]="['/singer']" routerLinkActive="active-menu">Nghệ sĩ</a>
                         <div class="child">
                             <div class="cover-child">
                                 <div class="child-1">
@@ -103,18 +103,36 @@
                     <li class="menu-parents" *ngIf="!ten">
                         <a href="" [routerLink]="['/login']" class="list-item">Nhạc cá nhân</a>
                     </li>
+                    <li class="menu-parents" *ngIf="user.role_ == '1'">
+                        <a href="" [routerLink]="['/admin']" class="list-item" routerLinkActive="active-menu">Quản lý</a>
+                    </li>
                 </ul>
             </div>
 
         </div>
         <div class="search">
             <div class="form-search">
-                <input type="text" placeholder="Nhập tên bài hát, ca sĩ hoặc MV..." name="search">
+                <input (click)="getData()" [(ngModel)]="searchText" type="text" placeholder="Nhập tên bài hát, ca sĩ hoặc MV..." name="search">
+                <div class="data" *ngIf="searchText">
+                    <tr *ngFor="let music of nhac | filter:searchText">
+                        <td (click)="laynhac(music)">{{music.musicName}}</td>
+
+                    </tr>
+                    <tr *ngFor="let singer of singers | filter:searchText">
+                        <td (click)="onDetails(singer._id)">{{singer.singerName}}</td>
+                    </tr>
+
+                </div>
+
                 <button type="submit"><i class="fa fa-search"></i></button>
             </div>
         </div>
+
         <div class="login">
-            <div class="avata">
+            <div class="avata" *ngIf="ten">
+                <img src="{{avata}}" alt="">
+            </div>
+            <div class="avata" *ngIf="!ten">
                 <img src="../../assets/user.png" alt="">
             </div>
             <div class="text">
@@ -123,7 +141,7 @@
                         {{ten}}
                     </div>
                     <div class="log-out">
-                        <div class="top" [routerLink]="['/playlist']">
+                        <div class="top" *ngIf="user.role_ == '0'" [routerLink]="['/playlist']">
                             <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                             <span>Nhạc cá nhân</span>
 

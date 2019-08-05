@@ -42,7 +42,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('user', JSON.stringify(response));
         localStorage.setItem('fullName', JSON.stringify(response.fullName));
         localStorage.setItem('email', JSON.stringify(response.email));
-        localStorage.setItem('password', JSON.stringify(response.password));
+        localStorage.setItem('avata', JSON.stringify(response.avata));
+        
         this.router.navigate(['home']);
         setTimeout(()=>{
         document.location.reload(true)

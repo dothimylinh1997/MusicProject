@@ -1,1 +1,49 @@
-<p>singer-detail works!</p>
+<section id="singer-detail">
+    <div class="container">
+        <div class="cover-singer-detail">
+            <div class="banner">
+                <div class="main-image">
+                    <div class="background"></div>
+                    <img src="{{singer?.avatar}}" alt="">
+                    <div class="small-image">
+                        <img src="{{singer?.avatar}}" alt="">
+                    </div>
+                    <div class="detail">
+                        <h5 class="singer-name">Ca sĩ: {{singer?.singerName}}</h5>
+                        <h6 class="nation">Quốc gia: {{singer?.nation}}</h6>
+                        <p class="story">{{singer?.story}}</p>
+                    </div>
+                </div>
+            </div>
+            <mat-tab-group>
+                <mat-tab class="tab-title" label="Giới thiệu">
+                    <div class="tab-content">
+                        <div class="detail">
+                            <h5 class="singer-name">Ca sĩ: {{singer?.singerName}}</h5>
+                            <h6 class="nation">Quốc gia: {{singer?.nation}}</h6>
+                            <p class="story">{{singer?.story}}</p>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab class="tab-title" label="Music Video">
+                    <span class="text">Music Video</span>
+                    <div class="tab-content">
+
+                    </div>
+                </mat-tab>
+                <mat-tab class="tab-title" label="Bài hát">
+                    <span class="text">Bài hát</span>
+                    <div class="tab-content">
+
+                    </div>
+                </mat-tab>
+                <mat-tab class="tab-title" label="Album">
+                    <span class="text">Album</span>
+                    <div class="tab-content">
+
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</section>

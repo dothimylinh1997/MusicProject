@@ -25,13 +25,12 @@ export class VideoComponent implements OnInit {
 
     // });
   }
-  laynhac(nhac) {
-    // console.log(nhac);
-    // this.MusicSV.getMusicsById(nhac._id).subscribe(data => {
-      console.log(nhac);
-    // });
-    
-    localStorage.setItem('idnhac', JSON.stringify(nhac));
-    this.router.navigate(['/video-detail']);
+  laynhac(music) {
+    this.MusicSV.getMusicsById(music._id).subscribe((dataMusic)=>{
+      if(dataMusic){
+        
+        this.router.navigate(['/video-detail', dataMusic['_id']]);
+      }
+    })
   }
 }

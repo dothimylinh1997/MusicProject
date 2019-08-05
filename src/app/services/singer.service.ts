@@ -13,4 +13,7 @@ export class SingerService {
   getSingerbyID(id: string) {
     return this.http.get(`http://localhost:5000/singer/${id}`);
   }
+  getSingerbyMusic(id: string){
+    return this.http.get(`http://localhost:5000/singer/music/${id}`);
+  }
 }

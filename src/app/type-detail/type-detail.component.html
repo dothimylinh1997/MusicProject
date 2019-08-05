@@ -1,0 +1,51 @@
+<section id="type-detail">
+    <div class="container">
+        <h2>Thể loại : {{type?.nameType}}</h2>
+        <div class="cover-type-detail">
+            <mat-tab-group>
+                <mat-tab class="tab-title" label="Bài hát">
+                    <div class="tab-content">
+                        <div *ngFor="let list of listMusic">
+                            <ng-container *ngIf="list.isVideo == '0'">
+                                <div class="cover-each-song" (click)="laynhac(list)">
+                                    <div class="image">
+                                        <img src="{{list?.image}}" alt="">
+                                    </div>
+                                    <div class="detail">
+                                        <div class="name-song">
+                                            {{list?.musicName}}
+                                        </div>
+                                        <div class="singer">
+                                            <h5 *ngFor="let nameSinger of list?.singer" class="singer-name">{{nameSinger?.singerName}}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab class="tab-title" label="Music Video">
+                    <div class=" row tab-content">
+                        <div *ngFor="let list of listMusic">
+                            <ng-container class="col-lg-3" *ngIf="list.isVideo == '1'">
+                                <div class="cover-video" (click)="layvideo(list)">
+                                    <div class="image">
+                                        <img src="{{list?.image}}" alt="">
+                                    </div>
+                                    <div class="detail">
+                                        <div class="name-song">
+                                            {{list?.musicName}}
+                                        </div>
+                                        <div class="singer">
+                                            <h5 *ngFor="let nameSinger of list?.singer" class="singer-name">{{nameSinger?.singerName}}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</section>

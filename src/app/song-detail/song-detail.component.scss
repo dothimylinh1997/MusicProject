@@ -1,5 +1,6 @@
 #song-detail {
     .cover-song-detail {
+        position: relative;
         .banner {
             .main-image {
                 position: relative;
@@ -11,13 +12,13 @@
                     opacity: 0.8;
                 }
                 img {
-                    width: -webkit-fill-available;
+                    width: 100%;
                     height: 250px;
                     object-fit: cover;
                 }
                 .small-image {
                     position: absolute;
-                    top: 25px;
+                    top: 10px;
                     width: 200px;
                     height: 200px;
                     padding: 20px;
@@ -41,7 +42,8 @@
                     left: 25%;
                     top: 20%;
                     .name-song,
-                    .type {
+                    .type,
+                    .singer-name {
                         color: #fff;
                     }
                 }
@@ -49,8 +51,125 @@
         }
         audio {
             width: 100%;
+            position: absolute;
+            bottom: 0;
             &:focus {
                 outline: 0;
+            }
+        }
+    }
+    .bottom-audio {
+        display: flex;
+        width: 100%;
+        padding: 20px 0;
+        .add,
+        .love,
+        .comment {
+            width: 15%;
+            font-size: 20px;
+            span {
+                margin-left: 10px;
+            }
+            &:hover {
+                i,
+                span {
+                    color: #6e55b4;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .content-song {
+        .lyrics {
+            padding: 20px;
+        }
+        .support {
+            .button {
+                text-align: right;
+                font-size: 20px;
+                span {
+                    margin-left: 10px;
+                }
+                &:hover {
+                    i,
+                    span {
+                        color: #6e55b4;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .update-lyrics {
+                textarea.form-control {
+                    height: 300px;
+                    padding: 10px;
+                    margin: 20px 0;
+                }
+                .submit {
+                    display: flex;
+                    height: 50px;
+                    line-height: 50px;
+                    justify-content: center;
+                    .cancel {
+                        margin-right: 20px;
+                    }
+                    button {
+                        background: #6e55b4;
+                        color: #fff;
+                        text-transform: uppercase;
+                        border: none;
+                        padding: 10px 20px;
+                        border-radius: 5px;
+                        line-height: 30px;
+                    }
+                }
+            }
+        }
+        .button {
+            text-align: right;
+            font-size: 20px;
+            span {
+                margin-left: 10px;
+            }
+            &:hover {
+                i,
+                span {
+                    color: #6e55b4;
+                    cursor: pointer;
+                }
+            }
+        }
+        .cover-list {
+            padding-top: 30px;
+        }
+        .cover-each-song {
+            box-shadow: 0px 0px 23px 0px rgb(247, 247, 247);
+            padding: 10px;
+            position: relative;
+            &:hover {
+                cursor: pointer;
+                background-color: #efefef54;
+                .detail {
+                    .name-song {
+                        color: #6e55b4;
+                    }
+                }
+            }
+            width: 100%;
+            display: flex;
+            padding-top: 10px;
+            .image {
+                width: 14%;
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+            }
+            .detail {
+                width: 80%;
+                .name-song {
+                    padding: 10px;
+                    font-weight: 500;
+                }
             }
         }
     }

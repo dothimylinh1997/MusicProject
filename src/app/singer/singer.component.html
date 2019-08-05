@@ -1,4 +1,3 @@
-<app-page></app-page>
 <section id="singer">
     <div class="container">
         <mat-tab-group>
@@ -9,7 +8,7 @@
                         <div class="row">
                             <ng-container *ngFor="let singer of singers">
                                 <div class="col-lg-3" *ngIf="singer.nation == 'Việt Nam'">
-                                    <div class="cover-each-singer" (click)="onDetails(singer.singerName)">
+                                    <div class="cover-each-singer" (click)="onDetails(singer._id)">
                                         <div class="avatar">
                                             <img src="{{singer?.avatar}}" alt="">
                                         </div>
@@ -33,7 +32,7 @@
                         <div class="row">
                             <ng-container *ngFor="let singer of singers">
                                 <div class="col-lg-3" *ngIf="singer.nation == 'US-UK'">
-                                    <div class="cover-each-singer" (click)="onDetails(singer.singerName)">
+                                    <div class="cover-each-singer" (click)="onDetails(singer._id)">
                                         <div class="avatar">
                                             <img src="{{singer?.avatar}}" alt="">
                                         </div>
@@ -56,8 +55,8 @@
                     <div class="cover-singer">
                         <div class="row">
                             <ng-container *ngFor="let singer of singers">
-                                <div class="col-lg-3" *ngIf="singer.nation == 'Korean'">
-                                    <div class="cover-each-singer" (click)="onDetails(singer.singerName)">
+                                <div class="col-lg-3" *ngIf="singer.nation == 'Korea'">
+                                    <div class="cover-each-singer" (click)="onDetails(singer._id)">
                                         <div class="avatar">
                                             <img src="{{singer?.avatar}}" alt="">
                                         </div>
@@ -83,7 +82,7 @@
                         <div class="row">
                             <ng-container *ngFor="let singer of singers">
                                 <div class="col-lg-3" *ngIf="singer.nation == 'Việt Nam'">
-                                    <div class="cover-each-singer" (click)="onDetails(singer.singerName)">
+                                    <div class="cover-each-singer" (click)="onDetails(singer._id)">
                                         <div class="avatar">
                                             <img src="{{singer?.avatar}}" alt="">
                                         </div>
@@ -109,8 +108,8 @@
                     <div class="cover-singer">
                         <div class="row">
                             <ng-container *ngFor="let singer of singers">
-                                <div class="col-lg-3" *ngIf="singer.nation == 'Korean'">
-                                    <div class="cover-each-singer" (click)="onDetails(singer.singerName)">
+                                <div class="col-lg-3" *ngIf="singer.nation == 'Korea'">
+                                    <div class="cover-each-singer" (click)="onDetails(singer._id)">
                                         <div class="avatar">
                                             <img src="{{singer?.avatar}}" alt="">
                                         </div>
@@ -137,7 +136,7 @@
                         <div class="row">
                             <ng-container *ngFor="let singer of singers">
                                 <div class="col-lg-3" *ngIf="singer.nation == 'US-UK'">
-                                    <div class="cover-each-singer" (click)="onDetails(singer.singerName)">
+                                    <div class="cover-each-singer" (click)="onDetails(singer._id)">
                                         <div class="avatar">
                                             <img src="{{singer?.avatar}}" alt="">
                                         </div>

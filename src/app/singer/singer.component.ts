@@ -21,8 +21,8 @@ export class SingerComponent implements OnInit {
       console.log(data);
     });
   }
-  onDetails(singerName){
-    this.router.navigate([`/singer-detail/${singerName}`]);
+  onDetails(_id){
+    this.router.navigate([`/singer-detail/${_id}`]);
   }
   // slideConfig = {
   //   "slidesToShow": 4, 

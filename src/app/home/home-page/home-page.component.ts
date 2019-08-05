@@ -2,6 +2,7 @@ import { Component, OnInit,ViewEncapsulation } from '@angular/core';
 import { MusicsService } from '../../services/musics.service';
 import { SingerService } from '../../services/singer.service';
 import { Router } from '@angular/router';
+import { TypeService } from '../../services/type.service';
 
 @Component({
   selector: 'app-home-page',
@@ -13,13 +14,17 @@ export class HomePageComponent implements OnInit {
 
   nhac;
   baihat:any;
-  
+  listMusic;
   singers;
+  type;
   slideConfig = { 'slidesToShow': 4, 'slidesToScroll': 4, 'dots': true };
-  constructor(private router: Router, private MusicSV: MusicsService, private singerService: SingerService) { }
+  slideConfigtype = { 'slidesToShow': 4, 'slidesToScroll': 4, 'dots': true };
+  constructor(private router: Router, 
+    private MusicSV: MusicsService,
+    private singerService: SingerService,
+    private TypeService: TypeService) { }
 
   ngOnInit() {
-
     this.MusicSV.getMusics().subscribe(data => {
       this.nhac = data;
       console.log(data);
@@ -28,18 +33,35 @@ export class HomePageComponent implements OnInit {
       this.singers = data;
       console.log(data);
     });
+    this.TypeService.getAllType().subscribe(data => {
+      this.type = data;
+      console.log(this.type);
+      
+    })
   }
-  laynhac(nhac) {
-    console.log(nhac);
-    localStorage.setItem('idnhac', JSON.stringify(nhac));
-    this.router.navigate(['/song-detail']);
-  }
+
   layvideo(nhac) {
-    console.log(nhac);
-    localStorage.setItem('idnhac', JSON.stringify(nhac));
-    this.router.navigate(['/video-detail']);
+    this.MusicSV.getMusicsById(nhac._id).subscribe((dataMusic)=>{
+      if(dataMusic){
+        this.router.navigate(['/video-detail', dataMusic['_id']]);
+      }
+    })
   }
-  onDetails(singerName){
-    this.router.navigate([`/singer-detail/${singerName}`]);
+  laynhac(music) {
+    this.MusicSV.getMusicsById(music._id).subscribe((dataMusic)=>{
+      if(dataMusic){
+        this.router.navigate(['/song-detail', dataMusic['_id']]);
+      }
+    }) 
+  }
+  getType(type) {
+    this.TypeService.getTypeByID(type._id).subscribe((dataType)=>{
+      if(dataType){
+        this.router.navigate(['/type-detail', dataType['_id']]);
+      }
+    })
+  }
+  onDetails(_id){
+    this.router.navigate([`/singer-detail/${_id}`]);
   }
 }

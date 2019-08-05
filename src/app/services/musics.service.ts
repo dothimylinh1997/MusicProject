@@ -12,4 +12,7 @@ export class MusicsService {
   getMusicsById(id:string){
     return this.http.get(`http://localhost:5000/music/${id}`);
   }
+  getMusicsByType(id:string){
+    return this.http.get(`http://localhost:5000/music/type/${id}`);
+  }
 }

@@ -22,6 +22,7 @@ header {
         }
         .search {
             width: 50%;
+            position: relative;
             .form-search {
                 width: 100%;
                 display: flex;
@@ -43,6 +44,22 @@ header {
                     background-color: transparent;
                     &:focus {
                         outline: 0;
+                    }
+                }
+                .data {
+                    position: absolute;
+                    top: 50px;
+                    width: -webkit-fill-available;
+                    z-index: 100;
+                    tr {
+                        height: 40px;
+                        width: 100%;
+                        background: bisque;
+                        line-height: 40px;
+                        td {
+                            padding-left: 20px;
+                            cursor: pointer;
+                        }
                     }
                 }
                 button {
@@ -69,12 +86,16 @@ header {
                 outline: none;
             }
             .avata {
-                width: 20%;
+                width: 50px;
+                height: 50px;
                 position: absolute;
                 right: 100px;
                 border-radius: 100%;
                 img {
-                    width: 80%;
+                    width: 100%;
+                    height: 100%;
+                    -o-object-fit: cover;
+                    object-fit: cover;
                 }
             }
             .text {
@@ -119,6 +140,10 @@ header {
                                 }
                             }
                         }
+                    }
+                    .active-menu {
+                        color: #65509e !important;
+                        border-bottom: 2px solid #65509e;
                     }
                     // &:nth-child(2) {
                     //     .child {
@@ -209,6 +234,7 @@ header {
     .name {
         position: relative;
         text-transform: capitalize;
+        left: 30px;
         .user {
             font-weight: 500;
             left: 80px;

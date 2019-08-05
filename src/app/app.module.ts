@@ -23,6 +23,12 @@ import { SongDetailComponent } from './song-detail/song-detail.component';
 import { UpdateAccountComponent } from './account/update-account/update-account.component';
 import { SingerDetailComponent } from './singer-detail/singer-detail.component';
 import { PlaylistComponent } from './account/playlist/playlist.component';
+import { TypePipe } from './pipe/type.pipe';
+import { AdminComponent } from './admin/admin.component';
+import { TypeComponent } from './type/type.component';
+import { TypeDetailComponent } from './type-detail/type-detail.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -40,7 +46,11 @@ import { PlaylistComponent } from './account/playlist/playlist.component';
     SongDetailComponent,
     UpdateAccountComponent,
     SingerDetailComponent,
-    PlaylistComponent
+    PlaylistComponent,
+    TypePipe,
+    AdminComponent,
+    TypeComponent,
+    TypeDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +60,9 @@ import { PlaylistComponent } from './account/playlist/playlist.component';
     MatInputModule,
     MatTabsModule,
     ReactiveFormsModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    Ng2SearchPipeModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -10,18 +10,68 @@
                     </div>
                     <div class="detail">
                         <h3 class="name-song">{{nhac?.musicName}}</h3>
-                        <h5 class="singer-name"></h5>
-                        <h4 class="type">Thể loại : {{nhac?.musicType}}</h4>
+                        <h5 *ngFor="let nameSinger of nhac?.singer" class="singer-name">{{nameSinger?.singerName}}</h5>
+                        <h4 class="type">Thể loại : {{nhac?.musicType?.nameType}}</h4>
                     </div>
                 </div>
             </div>
-            <audio controls autoplay>
-                <source src="{{nhac?.linkMusic}}" type="audio/mp3">
-                Your browser does not support the audio element.
-            </audio>
+            <audio autoplay controls #audioOption>
+                <source type="audio/mp3">
+              Your browser does not support the audio element.
+              </audio>
         </div>
-        <div class="lyrics">
-            {{nhac?.lyrics}}
+
+        <div class="content-song">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="lyrics">
+
+                        <div class="title">
+                            <h4>Lời bài hát</h4>
+                            <h3 class="name-song">{{nhac?.musicName}}</h3>
+                        </div>
+                        {{nhac?.lyrics}}
+                    </div>
+                    <div class="support">
+                        <div class="button">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            <span>Đóng góp lời bài hát</span>
+                        </div>
+                        <div class="update-lyrics">
+                            <textarea type="text" id="form1" class="md-textarea form-control" mdbInput></textarea>
+                            <div class="submit">
+
+                                <button type="button">Primary</button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-4">
+                    <h3>Có thể bạn muốn nghe</h3>
+                    <div class="cover-list">
+                        <div *ngFor="let list of listMusic">
+                            <ng-container *ngIf="list.isVideo == '0'">
+                                <div class="cover-each-song">
+                                    <div class="image" (click)="laynhac(list)">
+                                        <img src="{{list?.image}}" alt="">
+                                    </div>
+                                    <div class="detail" (click)="laynhac(list)">
+                                        <div class="name-song">
+                                            {{list?.musicName}}
+                                        </div>
+                                        <div class="singer">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
 </section>

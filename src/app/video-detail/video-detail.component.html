@@ -1,14 +1,85 @@
 <section id="video-detail">
     <div class="container">
-        <div class="cover-vide-detail">
-            <video width="100%" controls autoplay>
-                <source   src="{{nhac?.linkMusic}}" type="video/mp4" >
+        <div class="cover-video-detail">
+            <video width="100%" controls autoplay #videoOption>
+                <source type="video/mp4" >
                 Your browser does not support HTML5 video.
               </video>
+        </div>
+        <div class="bottom-audio">
+            <div class="add">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                <span>Thêm vào</span>
+            </div>
+            <div class="love">
+                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                <span>Yêu thích</span>
+            </div>
+            <div class="comment">
+                <i class="fa fa-comment-o" aria-hidden="true"></i>
+                <span>Bình luận</span>
+            </div>
+        </div>
+
+        <div class="detail">
+            <h3 class="name-song">
+                Bài: {{nhac?.musicName}}</h3>
+            <h5 *ngFor="let nameSinger of nhac?.singer" class="singer-name">Ca sĩ: {{nameSinger?.singerName}}</h5>
+            <h4 class="type">Thể loại : {{nhac?.musicType?.nameType}}</h4>
 
         </div>
-        <div class="lyrics">
-            {{nhac?.lyrics}}
+        <div class="content-song">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="lyrics">
+
+                        <div class="title">
+                            <h4>Lời bài hát</h4>
+
+                        </div>
+                        {{nhac?.lyrics}}
+                    </div>
+                    <div class="support">
+                        <div class="button">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            <span>Đóng góp lời bài hát</span>
+                        </div>
+                        <div class="update-lyrics">
+                            <textarea type="text" id="form1" class="md-textarea form-control" mdbInput></textarea>
+                            <div class="submit">
+
+                                <button type="button">Primary</button>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-lg-4">
+                    <h3>Có thể bạn muốn xem</h3>
+                    <div class="cover-list">
+                        <div *ngFor="let list of listMusic">
+                            <ng-container *ngIf="list.isVideo == '1'">
+                                <div class="cover-video">
+                                    <div class="image" (click)="laynhac(list)">
+                                        <img src="{{list?.image}}" alt="">
+                                    </div>
+                                    <div class="detail" (click)="laynhac(list)">
+                                        <div class="name-song">
+                                            <h5>{{list?.musicName}}</h5>
+                                        </div>
+                                        <div class="singer">
+                                            <p *ngFor="let nameSinger of nhac?.singer">{{nameSinger?.singerName}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
 

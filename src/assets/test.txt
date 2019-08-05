@@ -1,0 +1,15 @@
+﻿{
+	"singerName":"Thiều Bảo Trâm",
+	"nation":"Việt Nam",
+	"avatar": "thieu-bao-tram.jpg",
+	"music": [
+		{
+			"musicName":"Triệu lý do",
+			"musicType":"v-dance",
+			"lyrics" : "There are millions reason, I know",
+			"isVideo": "0",
+			"linkMusic": "trieu-ly-do.mp3",
+			"image" :"trieu-ly-do.jpg"
+		}
+	]
+}

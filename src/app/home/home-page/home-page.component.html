@@ -3,6 +3,27 @@
     <div class="container">
         <div class="recommend">
             <h3>Thể loại</h3>
+            <div id="type-home">
+                <div class="cover-type">
+                    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfigtype">
+                        <ng-container ngxSlickItem *ngFor="let kind of type">
+                            <div>
+                                <div class="cover-each-type" (click)="getType(kind)">
+                                    <div class="image">
+                                        <img src="{{kind?.image}}" alt="">
+                                    </div>
+
+                                    <div class="detail">
+                                        <div class="name-type">
+                                            {{kind?.nameType}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </ngx-slick-carousel>
+                </div>
+            </div>
         </div>
         <div class="recommend">
             <h3>Video Music</h3>
@@ -10,7 +31,7 @@
                 <span class="text">Việt Nam</span>
                 <div class="row video">
                     <ng-container *ngFor="let music of nhac">
-                        <div class="col-lg-3" *ngIf="(music.musicType == 'v-pop' || music.musicType == 'v-dance' || music.musicType == 'v-edm') && music.isVideo == '1'">
+                        <div class="col-lg-3" *ngIf="music.country == 'Việt Nam' && music.isVideo == '1'">
                             <div class="cover-video" (click)="layvideo(music)">
                                 <div class="image">
                                     <img src="{{music?.image}}" alt="">
@@ -20,7 +41,7 @@
                                         {{music?.musicName}}
                                     </div>
                                     <div class="singer">
-
+                                        <h5 *ngFor="let nameSinger of music?.singer" class="singer-name">{{nameSinger?.singerName}}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -30,7 +51,7 @@
                 <span class="text">Âu Mỹ</span>
                 <div class="row video">
                     <ng-container *ngFor="let music of nhac">
-                        <div class="col-lg-3" *ngIf="(music.musicType == 'us-pop' || music.musicType == 'us-dance' || music.musicType == 'us-edm') && music.isVideo == '1'">
+                        <div class="col-lg-3" *ngIf="music.country == 'US-UK' && music.isVideo == '1'">
                             <div class="cover-video" (click)="layvideo(music)">
                                 <div class="image">
                                     <img src="{{music?.image}}" alt="">
@@ -40,7 +61,7 @@
                                         {{music?.musicName}}
                                     </div>
                                     <div class="singer">
-
+                                        <h5 *ngFor="let nameSinger of music?.singer" class="singer-name">{{nameSinger?.singerName}}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -51,7 +72,7 @@
                 <span class="text">Hàn Quốc</span>
                 <div class="row video">
                     <ng-container *ngFor="let music of nhac">
-                        <div class="col-lg-3" *ngIf="(music.musicType == 'k-pop' || music.musicType == 'k-dance' || music.musicType == 'k-edm') && music.isVideo == '1'">
+                        <div class="col-lg-3" *ngIf="music.country == 'Korea' && music.isVideo == '1'">
                             <div class="cover-video" (click)="layvideo(music)">
                                 <div class="image">
                                     <img src="{{music?.image}}" alt="">
@@ -61,7 +82,7 @@
                                         {{music?.musicName}}
                                     </div>
                                     <div class="singer">
-
+                                        <h5 *ngFor="let nameSinger of music?.singer" class="singer-name">{{nameSinger?.singerName}}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -75,21 +96,21 @@
             <div id="song">
                 <div class="cover-song">
                     <span class="text">Việt Nam</span>
-                    <div class="row tab-content">
+                    <div class="tab-content">
                         <div class="cover-song">
                             <div class="row">
                                 <ng-container *ngFor="let music of nhac">
-                                    <div class="col-lg-6 each-song" *ngIf="(music.musicType == 'v-pop' || music.musicType == 'v-dance' || music.musicType == 'v-edm') && music.isVideo == '0'">
-                                        <div class="cover-each-song">
-                                            <div class="image" (click)="laynhac(music)">
+                                    <div class="col-lg-6 each-song" *ngIf="music.country == 'Việt Nam' && music.isVideo == '0'">
+                                        <div class="cover-each-song" (click)="laynhac(music)">
+                                            <div class="image">
                                                 <img src="{{music?.image}}" alt="">
                                             </div>
-                                            <div class="detail" (click)="laynhac(music)">
+                                            <div class="detail">
                                                 <div class="name-song">
                                                     {{music?.musicName}}
                                                 </div>
                                                 <div class="singer">
-
+                                                    <h5 *ngFor="let nameSinger of music?.singer" class="singer-name">{{nameSinger?.singerName}}</h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -99,21 +120,21 @@
                         </div>
                     </div>
                     <span class="text">Âu Mỹ</span>
-                    <div class="row tab-content">
+                    <div class="tab-content">
                         <div class="cover-song">
                             <div class="row">
                                 <ng-container *ngFor="let music of nhac">
-                                    <div class="col-lg-6 each-song" *ngIf="(music.musicType == 'us-pop' || music.musicType == 'us-dance' || music.musicType == 'us-edm') && music.isVideo == '0'">
-                                        <div class="cover-each-song">
-                                            <div class="image" (click)="laynhac(music)">
+                                    <div class="col-lg-6 each-song" *ngIf="music.country == 'US-UK' && music.isVideo == '0'">
+                                        <div class="cover-each-song" (click)="laynhac(music)">
+                                            <div class="image">
                                                 <img src="{{music?.image}}" alt="">
                                             </div>
-                                            <div class="detail" (click)="laynhac(music)">
+                                            <div class="detail">
                                                 <div class="name-song">
                                                     {{music?.musicName}}
                                                 </div>
                                                 <div class="singer">
-
+                                                    <h5 *ngFor="let nameSinger of music?.singer" class="singer-name">{{nameSinger?.singerName}}</h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -124,21 +145,21 @@
 
                     </div>
                     <span class="text">Hàn Quốc</span>
-                    <div class="row tab-content">
+                    <div class="tab-content">
                         <div class="cover-song">
                             <div class="row">
                                 <ng-container *ngFor="let music of nhac">
-                                    <div class="col-lg-6 each-song" *ngIf="(music.musicType == 'k-pop' || music.musicType == 'k-dance' || music.musicType == 'k-edm') && music.isVideo == '0'">
-                                        <div class="cover-each-song">
-                                            <div class="image" (click)="laynhac(music)">
+                                    <div class="col-lg-6 each-song" *ngIf="music.country == 'Korea' && music.isVideo == '0'">
+                                        <div class="cover-each-song" (click)="laynhac(music)">
+                                            <div class="image">
                                                 <img src="{{music?.image}}" alt="">
                                             </div>
-                                            <div class="detail" (click)="laynhac(music)">
+                                            <div class="detail">
                                                 <div class="name-song">
                                                     {{music?.musicName}}
                                                 </div>
                                                 <div class="singer">
-
+                                                    <h5 *ngFor="let nameSinger of music?.singer" class="singer-name">{{nameSinger?.singerName}}</h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -158,7 +179,7 @@
 
                     <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
                         <div ngxSlickItem *ngFor="let singer of singers">
-                            <div class="cover-each-singer" (click)="onDetails(singer.singerName)">
+                            <div class="cover-each-singer" (click)="onDetails(singer._id)">
                                 <div class="avatar">
                                     <img src="{{singer?.avatar}}" alt="">
                                 </div>
@@ -174,8 +195,5 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="recommend">
-        <h3>Playlist Mix cho bạn</h3>
     </div>
 </section>

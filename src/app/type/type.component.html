@@ -1,0 +1,24 @@
+<section id="type">
+    <div class="container">
+        <div class="cover-type">
+            <div class="row">
+                <ng-container *ngFor="let kind of type">
+                    <div class="col-lg-3">
+                        <div class="cover-each-type" (click)="getType(kind)">
+                            <div class="image">
+                                <img src="{{kind?.image}}" alt="">
+                            </div>
+
+                            <div class="detail">
+                                <div class="name-type">
+                                    {{kind?.nameType}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+
+        </div>
+    </div>
+</section>
