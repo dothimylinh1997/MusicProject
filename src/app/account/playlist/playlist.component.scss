@@ -1,0 +1,36 @@
+#playlist {
+    .cover-playlist {
+        .header {
+            display: flex;
+            justify-content: space-between;
+            .title {
+                padding: 40px 0;
+                text-transform: uppercase;
+                font-weight: 500;
+            }
+            .button {
+                padding: 40px 0;
+                span {
+                    background: #6e55b4;
+                    padding: 10px;
+                    border-radius: 5px;
+                    color: #fff;
+                    opacity: 0.7;
+                    &:hover {
+                        opacity: 1;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        .list {
+            .list-item {
+                font-weight: 500;
+                &:hover {
+                    cursor: pointer;
+                    color: #6e55b4;
+                }
+            }
+        }
+    }
+}

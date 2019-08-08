@@ -15,6 +15,8 @@ import { PlaylistComponent } from './account/playlist/playlist.component';
 import { AdminComponent } from './admin/admin.component';
 import { TypeComponent } from './type/type.component';
 import { TypeDetailComponent } from './type-detail/type-detail.component';
+import { PlaylistDetailComponent } from './account/playlist-detail/playlist-detail.component';
+import { CreateAccountComponent } from './account/create-account/create-account.component';
 
 
 const routes: Routes = [
@@ -32,7 +34,9 @@ const routes: Routes = [
   { path: 'playlist', component: PlaylistComponent},
   { path: 'admin', component: AdminComponent},
   { path: 'type', component: TypeComponent},
-  { path: 'type-detail/:id', component: TypeDetailComponent}
+  { path: 'type-detail/:id', component: TypeDetailComponent},
+  { path: 'playlist-detail/:id', component: PlaylistDetailComponent},
+  { path: 'create-account', component: CreateAccountComponent}
 ];
 
 @NgModule({

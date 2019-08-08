@@ -4,28 +4,30 @@
             <mat-tab class="tab-title" label="Quản lý Tài khoản">
                 <span class="title">Danh sách người dùng</span>
                 <div class="cover-client">
+                    <div class="table">
+                        <div class="column1">Profile</div>
+                        <div class="column2">thông tin</div>
+                        <div class="column3">Tác vụ</div>
+                    </div>
                     <ng-container *ngFor="let client of user">
-                        <div *ngIf="client.role_ == '0'">
+                        <div>
                             <div class="cover-user">
                                 <div class="image">
                                     <div class="cover-image">
-                                        <img src="{{client.avata}}" alt="">
+                                        <img src="{{client?.avata}}" alt="">
                                     </div>
 
                                 </div>
                                 <div class="detail">
                                     <div class="name">
-                                        {{client.fullName}}
+                                        {{client?.fullName}}
                                     </div>
                                     <div class="email">
-                                        {{client.email}}
+                                        {{client?.email}}
                                     </div>
                                 </div>
-                                <div class="button">
-                                    <div class="button-edit">
-                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                    </div>
-                                    <div class="button-delete">
+                                <div class="button" *ngIf="client?.role_ != '1'">
+                                    <div class="button-delete" data-toggle="modal" data-target="#DeleteUser" (click)="getIDUsertoDelete(client?._id)">
                                         <i class="fa fa-trash" aria-hidden="true"></i>
                                     </div>
                                 </div>
@@ -33,16 +35,19 @@
                         </div>
                     </ng-container>
                 </div>
-
             </mat-tab>
-            <mat-tab class="tab-title" label="Quản lý MV">
-
-                <div class="coverMusicVideo">
-                    <span class="text">Việt Nam</span>
+            <mat-tab class="tab-title" label="Quản lý Music Video">
+                <div class="header">
+                    <span class="title">Danh sách Music Video</span>
+                    <span class="icon">
+                        <i class="fa fa-plus-circle" aria-hidden="true" data-toggle="modal" data-target="#AddMusic"></i>
+                    </span>
+                </div>
+                <div class="coverMusicVideo-admin">
                     <div class="row video">
                         <ng-container *ngFor="let music of nhac">
-                            <div class="col-lg-3" *ngIf="music.country == 'Việt Nam' && music.isVideo == '1'">
-                                <div class="cover-video" (click)="layvideo(music)">
+                            <div class="col-lg-3" *ngIf="music.isVideo == '1'">
+                                <div class="cover-video">
                                     <div class="image">
                                         <img src="{{music?.image}}" alt="">
                                     </div>
@@ -54,45 +59,12 @@
                                             <h5 *ngFor="let nameSinger of music?.singer" class="singer-name">{{nameSinger?.singerName}}</h5>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </ng-container>
-                    </div>
-                    <span class="text">Âu Mỹ</span>
-                    <div class="row video">
-                        <ng-container *ngFor="let music of nhac">
-                            <div class="col-lg-3" *ngIf="music.country == 'US-UK' && music.isVideo == '1'">
-                                <div class="cover-video" (click)="layvideo(music)">
-                                    <div class="image">
-                                        <img src="{{music?.image}}" alt="">
-                                    </div>
-                                    <div class="detail">
-                                        <div class="name-song">
-                                            {{music?.musicName}}
+                                    <div class="button">
+                                        <div class="button-edit" data-toggle="modal" data-target="#UpdateMusic" (click)="getIDMusictoUpdate(music?._id)">
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </div>
-                                        <div class="singer">
-                                            <h5 *ngFor="let nameSinger of music?.singer" class="singer-name">{{nameSinger?.singerName}}</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </ng-container>
-
-                    </div>
-                    <span class="text">Hàn Quốc</span>
-                    <div class="row video">
-                        <ng-container *ngFor="let music of nhac">
-                            <div class="col-lg-3" *ngIf="music.country == 'Korea' && music.isVideo == '1'">
-                                <div class="cover-video" (click)="layvideo(music)">
-                                    <div class="image">
-                                        <img src="{{music?.image}}" alt="">
-                                    </div>
-                                    <div class="detail">
-                                        <div class="name-song">
-                                            {{music?.musicName}}
-                                        </div>
-                                        <div class="singer">
-                                            <h5 *ngFor="let nameSinger of music?.singer" class="singer-name">{{nameSinger?.singerName}}</h5>
+                                        <div class="button-delete" data-toggle="modal" data-target="#DeleteMusic" (click)="getIDMusictoDelete(music?._id)">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -102,15 +74,21 @@
                 </div>
             </mat-tab>
             <mat-tab class="tab-title" label="Quản lý Bài hát">
+                <div class="header">
+                    <span class="title">Danh sách Bài hát</span>
 
+                    <span class="icon">
+                            
+                            <i class="fa fa-plus-circle" aria-hidden="true" aria-hidden="true" data-toggle="modal" data-target="#AddMusic"></i>
+                        </span>
+                </div>
                 <div id="song">
                     <div class="cover-song">
-                        <span class="text">Việt Nam</span>
                         <div class="tab-content">
                             <div class="cover-song">
                                 <div class="row">
                                     <ng-container *ngFor="let music of nhac">
-                                        <div class="col-lg-6 each-song" *ngIf="music.country == 'Việt Nam' && music.isVideo == '0'">
+                                        <div class="col-lg-6 each-song" *ngIf="music.isVideo == '0'">
                                             <div class="cover-each-song">
                                                 <div class="image" (click)="laynhac(music)">
                                                     <img src="{{music?.image}}" alt="">
@@ -123,53 +101,12 @@
                                                         <h5 *ngFor="let nameSinger of music?.singer" class="singer-name">{{nameSinger?.singerName}}</h5>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </ng-container>
-                                </div>
-                            </div>
-                        </div>
-                        <span class="text">Âu Mỹ</span>
-                        <div class="tab-content">
-                            <div class="cover-song">
-                                <div class="row">
-                                    <ng-container *ngFor="let music of nhac">
-                                        <div class="col-lg-6 each-song" *ngIf="music.country == 'US-UK' && music.isVideo == '0'">
-                                            <div class="cover-each-song">
-                                                <div class="image" (click)="laynhac(music)">
-                                                    <img src="{{music?.image}}" alt="">
-                                                </div>
-                                                <div class="detail" (click)="laynhac(music)">
-                                                    <div class="name-song">
-                                                        {{music?.musicName}}
+                                                <div class="button">
+                                                    <div class="button-edit" data-toggle="modal" data-target="#UpdateMusic" (click)="getIDMusictoUpdate(music?._id)">
+                                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                                     </div>
-                                                    <div class="singer">
-                                                        <h5 *ngFor="let nameSinger of music?.singer" class="singer-name">{{nameSinger?.singerName}}</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </ng-container>
-                                </div>
-                            </div>
-
-                        </div>
-                        <span class="text">Hàn Quốc</span>
-                        <div class="tab-content">
-                            <div class="cover-song">
-                                <div class="row">
-                                    <ng-container *ngFor="let music of nhac">
-                                        <div class="col-lg-6 each-song" *ngIf="music.country == 'Korea' && music.isVideo == '0'">
-                                            <div class="cover-each-song">
-                                                <div class="image" (click)="laynhac(music)">
-                                                    <img src="{{music?.image}}" alt="">
-                                                </div>
-                                                <div class="detail" (click)="laynhac(music)">
-                                                    <div class="name-song">
-                                                        {{music?.musicName}}
-                                                    </div>
-                                                    <div class="singer">
-                                                        <h5 *ngFor="let nameSinger of music?.singer" class="singer-name">{{nameSinger?.singerName}}</h5>
+                                                    <div class="button-delete" data-toggle="modal" data-target="#DeleteMusic" (click)="getIDMusictoDelete(music?._id)">
+                                                        <i class="fa fa-trash" aria-hidden="true"></i>
                                                     </div>
                                                 </div>
                                             </div>
@@ -182,11 +119,260 @@
                 </div>
             </mat-tab>
             <mat-tab class="tab-title" label="Quản lý lời bài hát">
-                <span class="text">Quản lý lời bài hát</span>
-                <div class="tab-content">
+                <span class="title">Danh sách lời bài hát</span>
+                <div class="cover-lyrics">
+                    <div class="table">
+                        <div class="column1">Tên bài hát</div>
+                        <div class="column2">Nội dung</div>
+                        <div class="column3">Tác vụ</div>
 
+                    </div>
+                    <ng-container *ngFor="let nhac of nhacTemp">
+                        <div>
+                            <div class="cover-nhac">
+                                <div class="name-song">
+                                    {{nhac?.musicName}}
+                                </div>
+                                <div class="detail">
+                                    {{nhac?.lyrics}}
+                                </div>
+                                <div class="button">
+                                    <button (click)="UpdateLyrics(nhac?.id, nhac)">Cập nhật</button>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
                 </div>
             </mat-tab>
         </mat-tab-group>
     </div>
 </section>
+
+
+<div class="modal fade" id="AddMusic" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Thêm bài hát</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="addMusicForm" action="">
+                    <div class="cover-form">
+                        <div class="cover-input">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Tên bài hát</span>
+                                </div>
+                                <input type="text" formControlName="musicName" name="musicName" #musicName class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required="">
+                            </div>
+                            <!-- <div *ngIf="loginForm.controls['email'].errors">
+                                        <small class="text-danger" *ngIf="loginForm.controls['email'].errors.required">Email
+                                                    is required</small>
+                                        <small class="text-danger" *ngIf="loginForm.controls['email'].errors.pattern">Email
+                                                    is not match</small>
+                                    </div> -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Thể loại</span>
+                                </div>
+                                <input type="text" formControlName="musicType" name="musicType" #musicType class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Thể loại</span>
+                                </div>
+                                <input type="text" formControlName="musicType" name="musicType" #musicType class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Lời bài hát</span>
+                                </div>
+                                <input type="text" formControlName="lyrics" name="lyrics" #lyrics class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Lời bài hát</span>
+                                </div>
+                                <input type="text" formControlName="lyrics" name="lyrics" #lyrics class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Video/Song</span>
+                                </div>
+                                <input type="text" formControlName="lyrics" name="lyrics" #lyrics class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Link bài hát</span>
+                                </div>
+                                <input type="text" formControlName="linkMusic" name="linkMusic" #linkMusic class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Ảnh đại diện</span>
+                                </div>
+                                <input type="text" formControlName="image" name="image" #image class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Quốc gia</span>
+                                </div>
+                                <input type="text" formControlName="country" name="country" #country class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Ca sĩ</span>
+                                </div>
+                                <input type="text" formControlName="singer" name="singer" #singer class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <!-- <div *ngIf="loginForm.controls['password'].errors">
+                                        <small class="text-danger" *ngIf="loginForm.controls['password'].errors.required">Password is required</small>
+                                    </div> -->
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" (click)="EditMusic(idmusic._id)">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="UpdateMusic" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cập nhật bài hát</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="updateMusicForm" action="">
+                    <div class="cover-form">
+                        <div class="cover-input">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Tên bài hát</span>
+                                </div>
+                                <input type="text" formControlName="musicName" name="musicName" #musicName class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required="">
+                            </div>
+                            <!-- <div *ngIf="loginForm.controls['email'].errors">
+                                                <small class="text-danger" *ngIf="loginForm.controls['email'].errors.required">Email
+                                                            is required</small>
+                                                <small class="text-danger" *ngIf="loginForm.controls['email'].errors.pattern">Email
+                                                            is not match</small>
+                                            </div> -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Thể loại</span>
+                                </div>
+                                <input type="text" formControlName="musicType" name="musicType" #musicType class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Thể loại</span>
+                                </div>
+                                <input type="text" formControlName="musicType" name="musicType" #musicType class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Lời bài hát</span>
+                                </div>
+                                <input type="text" formControlName="lyrics" name="lyrics" #lyrics class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Lời bài hát</span>
+                                </div>
+                                <input type="text" formControlName="lyrics" name="lyrics" #lyrics class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Video/Song</span>
+                                </div>
+                                <input type="text" formControlName="lyrics" name="lyrics" #lyrics class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Link bài hát</span>
+                                </div>
+                                <input type="text" formControlName="linkMusic" name="linkMusic" #linkMusic class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Ảnh đại diện</span>
+                                </div>
+                                <input type="text" formControlName="image" name="image" #image class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Quốc gia</span>
+                                </div>
+                                <input type="text" formControlName="country" name="country" #country class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Ca sĩ</span>
+                                </div>
+                                <input type="text" formControlName="singer" name="singer" #singer class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                            <!-- <div *ngIf="loginForm.controls['password'].errors">
+                                                <small class="text-danger" *ngIf="loginForm.controls['password'].errors.required">Password is required</small>
+                                            </div> -->
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" (click)="EditMusic(idmusic._id)">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="DeleteUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xóa người dùng</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+            </div>
+            <div class="modal-body">
+                Bạn có thực sự muốn xóa người dùng này?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" (click)="DeleteUser(iduser._id)">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="DeleteMusic" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xóa nhạc</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+            </div>
+            <div class="modal-body">
+                Bạn có thực sự muốn xóa bài hát này?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" (click)="DeleteMusic(idmusic._id)">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>

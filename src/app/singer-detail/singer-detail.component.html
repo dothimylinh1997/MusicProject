@@ -18,31 +18,70 @@
             <mat-tab-group>
                 <mat-tab class="tab-title" label="Giới thiệu">
                     <div class="tab-content">
-                        <div class="detail">
-                            <h5 class="singer-name">Ca sĩ: {{singer?.singerName}}</h5>
-                            <h6 class="nation">Quốc gia: {{singer?.nation}}</h6>
-                            <p class="story">{{singer?.story}}</p>
+                        <div class="detail-singer">
+                            <h4 class="singer-name">Ca sĩ: {{singer?.singerName}}</h4>
+                            <h5 class="nation">Quốc gia: {{singer?.nation}}</h5>
+                            <h6 class="story">{{singer?.story}}</h6>
                         </div>
                     </div>
                 </mat-tab>
                 <mat-tab class="tab-title" label="Music Video">
-                    <span class="text">Music Video</span>
-                    <div class="tab-content">
 
+                    <div class="tab-content">
+                        <div class="cover-allvideo">
+                            <h4>MV của : {{singer?.singerName}}</h4>
+                            <ng-container *ngFor="let nhac of music">
+                                <div class="col-lg-3 each-video" *ngIf="nhac.isVideo == '1'">
+                                    <div class="cover-video" (click)="layvideo(nhac)">
+                                        <div class="image">
+                                            <img src="{{nhac?.image}}" alt="">
+                                        </div>
+                                        <div class="detail">
+                                            <div class="name-song">
+                                                {{nhac?.musicName}}
+                                            </div>
+                                            <!-- <div class="singer">
+                                            {{singer.singerName}}
+                                        </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
                     </div>
                 </mat-tab>
                 <mat-tab class="tab-title" label="Bài hát">
-                    <span class="text">Bài hát</span>
+
                     <div class="tab-content">
+                        <div class="cover-allsong">
+                            <h4>Nhạc của : {{singer?.singerName}}</h4>
+                            <ng-container *ngFor="let nhac of music">
+                                <div class="col-lg-6 each-song" *ngIf="nhac.isVideo == '0'">
+                                    <div class="cover-each-song" (click)="laynhac(nhac)">
+                                        <div class="image">
+                                            <img src="{{nhac?.image}}" alt="">
+                                        </div>
+                                        <div class="detail">
+                                            <div class="name-song">
+                                                {{nhac?.musicName}}
+                                            </div>
+                                            <!-- <div class="singer">
+                                            {{singer.singerName}}
+                                        </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
 
                     </div>
                 </mat-tab>
-                <mat-tab class="tab-title" label="Album">
+                <!-- <mat-tab class="tab-title" label="Album">
                     <span class="text">Album</span>
                     <div class="tab-content">
 
                     </div>
-                </mat-tab>
+                </mat-tab> -->
             </mat-tab-group>
         </div>
     </div>

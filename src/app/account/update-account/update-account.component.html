@@ -10,44 +10,32 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
                                 </div>
-                                <input type="text" formControlName="email" #email value="{{gmail}}" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" disabled>
+                                <input type="text" formControlName="email" #email class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" disabled>
                             </div>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Username</span>
                                 </div>
-                                <input type="text" formControlName="fullName" name="fullName" #fullName class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" value="{{ten}}">
+                                <input type="text" formControlName="fullName" name="fullName" #fullName class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                             </div>
-                            <!-- <div *ngIf="updateForm.controls['fullName'].errors">
-                                <small class="text-danger" *ngIf="updateForm.controls['fullName'].errors.required">Name is required</small>
-                            </div> -->
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default"> Old Password</span>
-                                </div>
-                                <input type="password" formControlName="password" name="password" #password class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                            </div>
-                            <!-- <div *ngIf="updateForm.controls['password'].errors">
-                                <small class="text-danger" *ngIf="updateForm.controls['password'].errors.required">Password is required</small>
-                            </div> -->
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-default">New password</span>
                                 </div>
-                                <input type="password" formControlName="newPassword" name="new-password" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                                <input type="password" formControlName="newpassword" name="newpassword" #newpassword class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                             </div>
-                            <!-- <div *ngIf="updateForm.controls['newPassword'].errors">
-                                <small class="text-danger" *ngIf="updateForm.controls['newPassword'].errors.required">Password is required</small>
-                            </div> -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Confirm password</span>
+                                </div>
+                                <input type="password" formControlName="password" name="password" #password class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            </div>
                         </div>
 
                         <div class="cover-button">
                             <div class="button">
                                 <button type="button" class="btn btn-info" [disabled]="!updateForm.valid" (click)="onUpdate()">Cập nhật</button>
                             </div>
-                            <!-- <div class="dangky">
-                            <a href="" [routerLink]="['/login']">Đăng nhập</a>
-                        </div> -->
                         </div>
                     </div>
                 </form>

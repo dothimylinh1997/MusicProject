@@ -103,7 +103,7 @@
                     <li class="menu-parents" *ngIf="!ten">
                         <a href="" [routerLink]="['/login']" class="list-item">Nhạc cá nhân</a>
                     </li>
-                    <li class="menu-parents" *ngIf="user.role_ == '1'">
+                    <li class="menu-parents" *ngIf="data?.role_ == '1'">
                         <a href="" [routerLink]="['/admin']" class="list-item" routerLinkActive="active-menu">Quản lý</a>
                     </li>
                 </ul>
@@ -144,6 +144,11 @@
                         <div class="top" *ngIf="user.role_ == '0'" [routerLink]="['/playlist']">
                             <i class="fa fa-user-circle-o" aria-hidden="true"></i>
                             <span>Nhạc cá nhân</span>
+
+                        </div>
+                        <div class="top" *ngIf="user.role_ == '1'" [routerLink]="['/create-account']">
+                            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                            <span>Tạo tài khoản</span>
 
                         </div>
                         <div class="middle" [routerLink]="['/update-account']" (click)="layuser(user)">

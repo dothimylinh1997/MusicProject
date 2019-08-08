@@ -2,12 +2,13 @@
     <div class="container">
         <div class="cover-signup">
             <div class="form-signup">
-                <h2>Đăng ký</h2>
+                <h2>Đăng ký tài khoản Quản trị viên</h2>
                 <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" action="">
                     <div class="cover-form">
                         <div class="cover-input">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
                                 </div>
                                 <input type="text" formControlName="email" name="email" #email class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                             </div>
@@ -37,16 +38,26 @@
                             <div class="check" *ngIf="signupForm.controls['password'].errors">
                                 <small class="text-danger" *ngIf="signupForm.controls['password'].errors.required">Password is required</small>
                             </div>
-                        </div>
 
+                            <div class="input-group mb-3" *ngIf="user.role_ == '1'">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Role</span>
+                                </div>
+                                <input type="text" value="1" formControlName="role_" name="role_" #role_ class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                            </div>
+                        </div>
+                        <div class="check">
+                            <small class="text-danger">Phân quyền: 1 - Admin, 0 - Người dùng</small>
+                        </div>
                         <div class="cover-button">
                             <div class="button">
                                 <button type="button" class="btn btn-info" [disabled]="!signupForm.valid" (click)="onSignup()">Đăng ký</button>
                             </div>
-                            <div class="dangky">
+                            <!-- <div class="dangky">
                                 <a href="" [routerLink]="['/login']">Đăng nhập</a>
-                            </div>
+                            </div> -->
                         </div>
+
                     </div>
                 </form>
             </div>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import { UsersService } from './../../services/users.service';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 // export let browserRefresh = false;
 @Component({
   selector: 'app-login',
@@ -11,7 +11,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder,private router: Router, private userService: UsersService) { }
+  constructor(private toastr:ToastrService,private formBuilder: FormBuilder,private router: Router, private userService: UsersService) { }
   loginForm:FormGroup;
   browserRefresh:true
   ngOnInit() {
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('fullName', JSON.stringify(response.fullName));
         localStorage.setItem('email', JSON.stringify(response.email));
         localStorage.setItem('avata', JSON.stringify(response.avata));
-        
+        // this.toastr.success('Cập nhật thành công!');  
         this.router.navigate(['home']);
         setTimeout(()=>{
         document.location.reload(true)

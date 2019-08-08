@@ -21,6 +21,7 @@ export class HeaderComponent implements OnInit {
   nhac;
   type;
   singers;
+  data;
   constructor(private router: Router,
     private userService: UsersService,
     private musicService: MusicsService,
@@ -33,18 +34,11 @@ export class HeaderComponent implements OnInit {
     this.email = JSON.parse(`${localStorage.getItem('email')}`);
     this.user = JSON.parse(`${localStorage.getItem('user')}`);
     this.avata = JSON.parse(`${localStorage.getItem('avata')}`);
-
-    this.userService.getUsers().subscribe(data => {
-      this.user = data;
-      console.log(data);
-    });
-    this.userService.getUserbyID(this.user._id).subscribe(data => {
-      this.user = data;
-      console.log(this.user.role_);
-
-    })
-
+    
     this.getData();
+    
+    this.getClient();
+    
   }
   onLogout() {
     localStorage.clear();
@@ -54,7 +48,6 @@ export class HeaderComponent implements OnInit {
     }, 100)
   }
   layuser(user) {
-    console.log(user);
     localStorage.setItem('idnhac', JSON.stringify(user));
   }
   getData() {
@@ -88,5 +81,15 @@ export class HeaderComponent implements OnInit {
     this.nhac = [];
     this.router.navigate([`/singer-detail/${_id}`]);
   }
-
+  getClient(){
+    if(this.user != null){
+      
+        // console.log(this.user._id);
+      
+      this.userService.getUserbyID(this.user._id).subscribe(data => {
+        this.data = data;
+      });
+      
+    }
+  }
 }

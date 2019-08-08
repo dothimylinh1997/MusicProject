@@ -1,0 +1,58 @@
+<section id="playlist-detail">
+    <div class="container">
+        <div class="cover-playlist-detail">
+            <div class="playlist-name">
+                Danh sách : {{nhac?.listName}}
+            </div>
+            <mat-tab-group>
+                <mat-tab class="tab-title" label="Music Video">
+                    <div class="cover-video">
+                        <div class="row">
+                            <ng-container *ngFor="let nhac of music">
+                                <div class="col-lg-3 each-video" *ngIf="nhac.isVideo == '1'">
+                                    <div class="cover-each-video" (click)="layvideo(nhac)">
+                                        <div class="image">
+                                            <img src="{{nhac?.image}}" alt="">
+                                        </div>
+                                        <div class="detail">
+                                            <div class="name-song">
+                                                {{nhac?.musicName}}
+                                            </div>
+                                            <div class="singer">
+                                                {{nhac?.singerName}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </mat-tab>
+
+                <mat-tab class="tab-title" label="Bài hát">
+                    <div class="cover-song">
+                        <div *ngFor="let nhac of music">
+                            <div class="row">
+                                <div class="col-lg-6 each-song" *ngIf="nhac.isVideo == '0'">
+                                    <div class="cover-each-song" (click)="laynhac(nhac)">
+                                        <div class="image">
+                                            <img src="{{nhac?.image}}" alt="">
+                                        </div>
+                                        <div class="detail">
+                                            <div class="name-song">
+                                                {{nhac?.musicName}}
+                                            </div>
+                                            <div class="singer">
+                                                {{nhac?.singerName}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</section>

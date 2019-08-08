@@ -20,8 +20,7 @@ export class UpdateAccountComponent implements OnInit {
     this.updateForm = new FormGroup({
       email: new FormControl(),
       fullName: new FormControl(),
-      password: new FormControl(),
-      newPassword: new FormControl()
+      password: new FormControl()
     });
     this.ten = JSON.parse(`${localStorage.getItem('fullName')}`);
     this.gmail = JSON.parse(`${localStorage.getItem('email')}`);
@@ -34,7 +33,6 @@ export class UpdateAccountComponent implements OnInit {
   }
   buildForm(){
     const emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
-
     this.updateForm = this.formBuilder.group({
       email: ['', [
         Validators.required,
@@ -43,21 +41,32 @@ export class UpdateAccountComponent implements OnInit {
       fullName: ['', [
         Validators.required
       ]],
-      password: ['', [
+      newpassword: ['', [
         Validators.required
       ]],
-      newPassword: ['', [
+      password: ['', [
         Validators.required
       ]]
     });
+    this.updateForm.setValue({
+      email : this.gmail,
+      fullName: this.ten,
+      newpassword: '',
+      password: ''
+    })
   }
   onUpdate(){
     console.log(this.updateForm.value);
+    if (this.updateForm.value.newpassword != this.updateForm.value.password){
+      alert("Password not match");
+      return;
+    }
 
-    this.userService.onUpdate(this.user._id, this.updateForm.value).subscribe((response)=>{
+    this.userService.UpdateUser(this.user._id, this.updateForm.value).subscribe((response)=>{
       console.log(response);
       if(response){
         alert("Cập nhật thành công");
+        this.router.navigate(['home']);
       }
     }, err =>{
       if(err.status === 404){

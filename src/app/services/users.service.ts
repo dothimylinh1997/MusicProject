@@ -18,7 +18,7 @@ export class UsersService {
     return this.http.post<any>(`${this.Port}:5000/user/sign`, user);
   }
   getUsers(): Observable<any> {
-    console.log(123);
+    
     return this.http.get<any>('http://localhost:5000/user/get/profile').pipe(
       map(data => {
         return data;
@@ -30,10 +30,13 @@ export class UsersService {
 
     return this.http.post<User>(`${this.Port}:5000/user/create`, user);
   }
-  onUpdate(id: string, user: User): Observable<User> {
+  UpdateUser(id: string, user: User): Observable<User> {
     return this.http.put<User>(`${this.Port}:5000/user/update/${id}`, user)
   }
   getUserbyID(id: string): Observable<User> {
     return this.http.get<User>(`${this.Port}:5000/user/get/${id}`)
+  }
+  DeleteUserbyID(id: string): Observable <User> {
+    return this.http.delete<User>(`${this.Port}:5000/user/delete/${id}`);
   }
 }

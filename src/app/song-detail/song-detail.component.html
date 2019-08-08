@@ -20,10 +20,27 @@
               Your browser does not support the audio element.
               </audio>
         </div>
+        <div class="bottom-audio">
+            <div class="add" data-toggle="modal" data-target="#ThemDSYeu">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                <span>Thêm vào</span>
+            </div>
+            <div class="love">
+
+                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                <span>Yêu thích</span>
+            </div>
+            <div class="comment">
+
+                <i class="fa fa-comment-o" aria-hidden="true"></i>
+                <span> Bình luận </span>
+
+            </div>
+        </div>
 
         <div class="content-song">
-            <div class="row">
-                <div class="col-lg-8">
+            <div>
+                <div>
                     <div class="lyrics">
 
                         <div class="title">
@@ -38,35 +55,40 @@
                             <span>Đóng góp lời bài hát</span>
                         </div>
                         <div class="update-lyrics">
-                            <textarea type="text" id="form1" class="md-textarea form-control" mdbInput></textarea>
+                            <textarea type="text" id="form1" class="md-textarea form-control" #lyrics></textarea>
                             <div class="submit">
 
-                                <button type="button">Primary</button>
+                                <button type="button" (click)="AddLyrics(nhac?._id, lyrics.value)">Đóng góp lời bài hát</button>
 
                             </div>
                         </div>
                     </div>
-
-                </div>
-                <div class="col-lg-4">
-                    <h3>Có thể bạn muốn nghe</h3>
-                    <div class="cover-list">
-                        <div *ngFor="let list of listMusic">
-                            <ng-container *ngIf="list.isVideo == '0'">
-                                <div class="cover-each-song">
-                                    <div class="image" (click)="laynhac(list)">
-                                        <img src="{{list?.image}}" alt="">
+                    <div class="comments">
+                        <div class="title">
+                            Bình luận
+                        </div>
+                        <div class="cover-comments" *ngFor="let cmt of comments">
+                            <div class="each-comment">
+                                <div class="image-client">
+                                    <img src="{{cmt.user.avata}}" alt="">
+                                </div>
+                                <div class="detail">
+                                    <div class="name-client">
+                                        {{cmt.user.fullName}}
                                     </div>
-                                    <div class="detail" (click)="laynhac(list)">
-                                        <div class="name-song">
-                                            {{list?.musicName}}
-                                        </div>
-                                        <div class="singer">
-
-                                        </div>
+                                    <div class="comment-text">
+                                        {{cmt.comment}}
                                     </div>
                                 </div>
-                            </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="update-comment">
+                        <div class="text">
+                            <textarea type="text" id="form2" class="md-textarea form-control" #comment></textarea>
+                        </div>
+                        <div class="button-comment" (click)="AddComment(user._id, nhac?._id, comment.value)">
+                            <button type="button">Bình luận</button>
                         </div>
                     </div>
 
@@ -75,3 +97,32 @@
         </div>
     </div>
 </section>
+
+<div class="modal fade" id="ThemDSYeu" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xóa nhạc</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="departmentId" class="col-form-label">Department Id</label>
+                    <select class="form-control" formControlName="departmentId" id="departmentId">
+                                  <option [value]="item.departmentId" *ngFor="let item of departments"
+                                    [selected]="item.departmentId">{{item.departmentName}}</option>
+                                </select>
+                    <div *ngIf="formGroup.controls['departmentId'].errors">
+                        <small class="text-danger" *ngIf="formGroup.controls['departmentId'].errors.required">*</small>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" (click)="DeleteMusic(idmusic._id)">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>

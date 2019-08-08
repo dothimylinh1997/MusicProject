@@ -29,10 +29,9 @@
 
         </div>
         <div class="content-song">
-            <div class="row">
-                <div class="col-lg-8">
+            <div>
+                <div>
                     <div class="lyrics">
-
                         <div class="title">
                             <h4>Lời bài hát</h4>
 
@@ -48,15 +47,43 @@
                             <textarea type="text" id="form1" class="md-textarea form-control" mdbInput></textarea>
                             <div class="submit">
 
-                                <button type="button">Primary</button>
+                                <button type="button">Đóng góp lời bài hát</button>
 
                             </div>
                         </div>
                     </div>
+                    <div class="comments">
+                        <div class="title">
+                            Bình luận
+                        </div>
+                        <div class="cover-comments" *ngFor="let cmt of comments">
+                            <div class="each-comment">
+                                <div class="image-client">
+                                    <img src="{{cmt.user.avata}}" alt="">
+                                </div>
+                                <div class="detail">
+                                    <div class="name-client">
+                                        {{cmt.user.fullName}}
+                                    </div>
+                                    <div class="comment-text">
+                                        {{cmt.comment}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="update-comment">
+                        <div class="text">
+                            <textarea type="text" id="form2" class="md-textarea form-control" #comment></textarea>
+                        </div>
 
+                        <div class="button-comment">
+                            <button type="button" (click)="AddComment(user._id, nhac?._id, comment.value)">Bình luận</button>
+                        </div>
+                    </div>
 
                 </div>
-                <div class="col-lg-4">
+                <!-- <div class="col-lg-4">
                     <h3>Có thể bạn muốn xem</h3>
                     <div class="cover-list">
                         <div *ngFor="let list of listMusic">
@@ -78,7 +105,7 @@
                         </div>
                     </div>
 
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

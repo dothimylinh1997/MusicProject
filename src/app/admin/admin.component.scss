@@ -1,10 +1,44 @@
 #admin {
     padding: 40px 0;
+    .header {
+        display: flex;
+        justify-content: space-between;
+        .title {
+            padding: 10px 20px;
+        }
+        .icon {
+            i {
+                font-size: 60px;
+                opacity: 0.5;
+                color: #6e55b4;
+                &:hover {
+                    color: #6e55b4;
+                    opacity: 1;
+                }
+            }
+        }
+    }
     .title {
         font-weight: 500;
         text-transform: uppercase;
+        padding: 20px;
     }
     .cover-client {
+        .table {
+            width: 100%;
+            display: flex;
+            font-weight: 500;
+            text-transform: uppercase;
+            .column1 {
+                width: 15%;
+            }
+            .column2 {
+                width: 75%;
+            }
+            .column3 {
+                width: 20%;
+            }
+        }
         padding-top: 30px;
         .cover-user {
             padding-bottom: 20px;
@@ -21,7 +55,7 @@
             }
         }
         .image {
-            width: 10%;
+            width: 13%;
             .cover-image {
                 width: 50px;
                 height: 50px;
@@ -34,11 +68,13 @@
             }
         }
         .detail {
-            width: 60%;
+            width: 65%;
         }
         .button {
-            width: 30%;
+            width: 10%;
             display: flex;
+            justify-content: space-around;
+            -webkit-box-align: center;
             align-items: center;
             .button-edit,
             .button-delete {
@@ -62,9 +98,40 @@
             }
         }
     }
+    .cover-lyrics {
+        .table {
+            width: 100%;
+            display: flex;
+            font-weight: 500;
+            text-transform: uppercase;
+            padding: 30px 0;
+            .column1 {
+                width: 24%;
+            }
+            .column2 {
+                width: 75%;
+            }
+            .column3 {
+                width: 20%;
+            }
+        }
+        .cover-nhac {
+            display: flex;
+            padding: 20px 0;
+            .name-song {
+                width: 20%;
+            }
+            .detail {
+                width: 63%;
+            }
+            .button {
+                width: 10%;
+            }
+        }
+    }
 }
 
-.coverMusicVideo {
+.coverMusicVideo-admin {
     .text {
         text-transform: uppercase !important;
         font-weight: 600;
@@ -73,6 +140,9 @@
     .video {
         margin: 0;
         padding: 30px 0;
+        .col-lg-3 {
+            margin: 15px 0;
+        }
         .cover-video {
             box-shadow: 0px 0px 23px 0px rgb(216, 216, 216);
             padding: 10px;
@@ -94,6 +164,23 @@
                 img {
                     width: 100%;
                     height: 100%;
+                }
+            }
+            .button {
+                display: flex;
+                justify-content: space-between;
+                .button-edit,
+                .button-delete {
+                    i {
+                        font-size: 23px;
+                        font-weight: 500;
+                    }
+                    &:hover {
+                        i {
+                            color: #6e55b4;
+                            cursor: pointer;
+                        }
+                    }
                 }
             }
         }
@@ -168,6 +255,30 @@
                     .detail {
                         .name-song {
                             color: #6e55b4;
+                        }
+                    }
+                }
+                .button {
+                    display: flex;
+                    align-items: center;
+                    .button-edit,
+                    .button-delete {
+                        i {
+                            font-size: 23px;
+                            font-weight: 500;
+                        }
+                        &:hover {
+                            i {
+                                color: #6e55b4;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                    .button-delete {
+                        i {
+                            position: absolute;
+                            top: 23px;
+                            right: 40px;
                         }
                     }
                 }

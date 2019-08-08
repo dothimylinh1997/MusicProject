@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PageComponent } from './page/page.component';
@@ -29,6 +29,8 @@ import { TypeComponent } from './type/type.component';
 import { TypeDetailComponent } from './type-detail/type-detail.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule } from '@angular/forms';
+import { PlaylistDetailComponent } from './account/playlist-detail/playlist-detail.component';
+import { CreateAccountComponent } from './account/create-account/create-account.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { FormsModule } from '@angular/forms';
     TypePipe,
     AdminComponent,
     TypeComponent,
-    TypeDetailComponent
+    TypeDetailComponent,
+    PlaylistDetailComponent,
+    CreateAccountComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +66,8 @@ import { FormsModule } from '@angular/forms';
     ReactiveFormsModule,
     SlickCarouselModule,
     Ng2SearchPipeModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
