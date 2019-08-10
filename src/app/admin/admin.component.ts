@@ -25,6 +25,7 @@ export class AdminComponent implements OnInit {
   nhacTemp: any;
   iduser;
   idmusic;
+  idsinger;
   music;
   type;
   getMusic;
@@ -248,6 +249,19 @@ export class AdminComponent implements OnInit {
       this.idmusic = data;
       // console.log(this.idmusic);
     })
+  }
+  getIDSingertoDelete(id){
+    this.idsinger = id;
+  }
+  DeleteSinger(id){
+    this.singerService.DeleteSingerbyID(id).subscribe(data => {
+      console.log(data);
+      this.singerService.getAllSinger().subscribe(newData => {
+        this.singers = newData;
+        $('#DeleteSinger').modal('hide');
+      })
+    })
+    
   }
   UpdateLyrics(id, songUpdate){
     console.log(id);

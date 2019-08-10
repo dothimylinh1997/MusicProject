@@ -20,4 +20,7 @@ export class SingerService {
   AddSinger(singer: Singer){
     return this.http.post(`http://localhost:5000/singer/create`, singer);
   }
+  DeleteSingerbyID(id: String){
+    return this.http.delete(`http://localhost:5000/singer/delete/${id}`);
+  }
 }

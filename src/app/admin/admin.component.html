@@ -166,7 +166,7 @@
                                 <div class="name-singer">
                                     {{singer?.singerName}} <br> {{singer?.nation}}
                                 </div>
-                                <div class="button-delete" data-toggle="modal" data-target="#DeleteSinger">
+                                <div class="button-delete" data-toggle="modal" data-target="#DeleteSinger" (click)="getIDSingertoDelete(singer?._id)">
                                     <i class="fa fa-trash" aria-hidden="true"></i>
                                 </div>
                             </div>
@@ -477,7 +477,25 @@
     </div>
 </div>
 
-
+<div class="modal fade" id="DeleteSinger" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Xóa nghệ sĩ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+            </div>
+            <div class="modal-body">
+                Bạn có thực sự muốn xóa Nghệ sĩ này?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" (click)="DeleteSinger(idsinger)">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- <div class="modal fade" id="AddType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
