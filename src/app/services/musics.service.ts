@@ -26,7 +26,9 @@ export class MusicsService {
     return this.http.delete(`http://localhost:5000/music/delete/${id}`)
   }
   AddLyrics(id: string, music: Music){
-    console.log(music);
     return this.http.put(`http://localhost:5000/music/update/${id}`, music);
+  }
+  AddMusic(music: Music){
+    return this.http.post(`http://localhost:5000/music/create`, music);
   }
 }

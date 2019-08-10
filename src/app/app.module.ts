@@ -31,6 +31,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule } from '@angular/forms';
 import { PlaylistDetailComponent } from './account/playlist-detail/playlist-detail.component';
 import { CreateAccountComponent } from './account/create-account/create-account.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,9 @@ import { CreateAccountComponent } from './account/create-account/create-account.
     SlickCarouselModule,
     Ng2SearchPipeModule,
     FormsModule,
-    ToastrModule.forRoot()
+    NgSelectModule,
+    ToastrModule.forRoot(),
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'})
   ],
   providers: [],
   bootstrap: [AppComponent]

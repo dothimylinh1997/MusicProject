@@ -144,9 +144,125 @@
                     </ng-container>
                 </div>
             </mat-tab>
+            <mat-tab class="tab-title" label="Quản lý Nghệ sĩ">
+                <div class="header">
+                    <span class="title">Danh sách nghệ sĩ</span>
+                    <span class="icon">
+                        <i class="fa fa-plus-circle" aria-hidden="true" aria-hidden="true" data-toggle="modal" data-target="#AddSinger"></i>
+                    </span>
+                </div>
+                <div class="cover-lyrics">
+                    <div class="table">
+                        <div class="column1">Profile</div>
+                        <div class="column2">Thông tin</div>
+                        <div class="column3">Tác vụ</div>
+                    </div>
+                    <ng-container *ngFor="let singer of singers">
+                        <div>
+                            <div class="cover-singer">
+                                <div class="profile">
+                                    <img src="{{singer?.avatar}}" alt="" srcset="">
+                                </div>
+                                <div class="name-singer">
+                                    {{singer?.singerName}} <br> {{singer?.nation}}
+                                </div>
+                                <div class="button-delete" data-toggle="modal" data-target="#DeleteSinger">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </mat-tab>
+            <mat-tab class="tab-title" label="Quản lý Thể loại">
+                <div class="header">
+                    <span class="title">Danh sách thể loại</span>
+                    <span class="icon">
+                        <i class="fa fa-plus-circle" aria-hidden="true" aria-hidden="true" data-toggle="modal" data-target="#AddType"></i>
+                    </span>
+                </div>
+                <div class="cover-lyrics">
+                    <div class="table">
+                        <div class="column1">Tên thể loại</div>
+                        <div class="column2">Thông tin</div>
+                        <div class="column3">Tác vụ</div>
+                    </div>
+                    <ng-container *ngFor="let item of type">
+                        <div>
+                            <div class="cover-type">
+                                <div class="image-type">
+                                    <img src="{{item?.image}}" alt="" srcset="">
+                                </div>
+                                <div class="detail">
+                                    {{item?.nameType}}
+                                </div>
+                                <div class="button-delete" data-toggle="modal" data-target="#DeleteType">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </mat-tab>
         </mat-tab-group>
     </div>
 </section>
+
+
+<div class="modal fade" id="AddSinger" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Thêm nghệ sĩ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="addSingerForm">
+                    <div class="cover-form">
+                        <div class="cover-input">
+                            <div class="row">
+                                <div class="input-group mb-3 col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <label id="inputGroup-sizing-default">Tên ca sĩ</label>
+                                    </div>
+                                    <input type="text" formControlName="singerName" name="singerName" #singerName class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required="">
+                                </div>
+                                <div class="input-group mb-3 col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <label id="inputGroup-sizing-default">Quốc gia</label>
+                                    </div>
+                                    <input type="text" formControlName="nation" name="nation" #nation class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required="">
+                                </div>
+
+                                <div class="input-group mb-3 col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <label id="inputGroup-sizing-default">Tiểu sử</label>
+                                    </div>
+                                    <input type="text" formControlName="story" name="story" #story class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                                </div>
+                                <div class="input-group mb-3 col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <label id="inputGroup-sizing-default">Ảnh đại diện</label>
+                                    </div>
+                                    <input type="file" formControlName="avatar" name="avatar" #avatar (change)="getLinkAvatarSinger($event)" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" (click)="AddSinger()
+                        ">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 <div class="modal fade" id="AddMusic" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -159,85 +275,77 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form [formGroup]="addMusicForm" action="">
+                <form [formGroup]="addMusicForm">
                     <div class="cover-form">
                         <div class="cover-input">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Tên bài hát</span>
+                            <div class="row">
+                                <div class="input-group mb-3 col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <label id="inputGroup-sizing-default">Tên bài hát</label>
+                                    </div>
+                                    <input type="text" formControlName="musicName" name="musicName" #musicName class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required="">
                                 </div>
-                                <input type="text" formControlName="musicName" name="musicName" #musicName class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required="">
-                            </div>
-                            <!-- <div *ngIf="loginForm.controls['email'].errors">
-                                        <small class="text-danger" *ngIf="loginForm.controls['email'].errors.required">Email
-                                                    is required</small>
-                                        <small class="text-danger" *ngIf="loginForm.controls['email'].errors.pattern">Email
-                                                    is not match</small>
-                                    </div> -->
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Thể loại</span>
+                                <div class="input-group mb-3 col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <label id="inputGroup-sizing-default">Thể loại</label>
+                                    </div>
+                                    <select formControlName="musicType" name="musicType" #musicType class="form-control" class="where" (change)="getIDType($event)">
+                                                    <option *ngFor="let item of type" [value]="item._id">
+                                                        {{item.nameType}}</option>
+                                                </select>
                                 </div>
-                                <input type="text" formControlName="musicType" name="musicType" #musicType class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Thể loại</span>
+
+                                <div class="input-group mb-3 col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <label id="inputGroup-sizing-default">Lời bài hát</label>
+                                    </div>
+                                    <input type="text" formControlName="lyrics" name="lyrics" #lyrics class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                                 </div>
-                                <input type="text" formControlName="musicType" name="musicType" #musicType class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Lời bài hát</span>
+
+                                <div class="input-group mb-3 col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <label id="inputGroup-sizing-default">Video/Song</label>
+                                    </div>
+                                    <input type="text" formControlName="isVideo" name="isVideo" #isVideo class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                                 </div>
-                                <input type="text" formControlName="lyrics" name="lyrics" #lyrics class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Lời bài hát</span>
+                                <div class="input-group mb-3 col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <label id="inputGroup-sizing-default">Link bài hát</label>
+                                    </div>
+                                    <input type="file" (change)="getLinkMusic($event)" formControlName="linkMusic" name="linkMusic" #linkMusic class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                                 </div>
-                                <input type="text" formControlName="lyrics" name="lyrics" #lyrics class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Video/Song</span>
+                                <div class="input-group mb-3 col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <label id="inputGroup-sizing-default">Ảnh đại diện</label>
+                                    </div>
+                                    <input type="file" formControlName="image" name="image" #image (change)="getLinkImage($event)" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                                 </div>
-                                <input type="text" formControlName="lyrics" name="lyrics" #lyrics class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Link bài hát</span>
+                                <div class="input-group mb-3 col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <label id="inputGroup-sizing-default">Quốc gia</label>
+                                    </div>
+                                    <input type="text" formControlName="country" name="country" #country class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                                 </div>
-                                <input type="text" formControlName="linkMusic" name="linkMusic" #linkMusic class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Ảnh đại diện</span>
+
+                                <div class="form-group mb-3 col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <label id="inputGroup-sizing-default">Ca sĩ</label>
+                                    </div>
+                                    <select formControlName="singer" name="singer" #singer class="form-control" class="where" (change)="getIDSinger($event)">
+                                        <option *ngFor="let sg of singers" [value]="sg._id">
+                                            {{sg.singerName}}</option>
+                                    </select>
                                 </div>
-                                <input type="text" formControlName="image" name="image" #image class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                             </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Quốc gia</span>
-                                </div>
-                                <input type="text" formControlName="country" name="country" #country class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Ca sĩ</span>
-                                </div>
-                                <input type="text" formControlName="singer" name="singer" #singer class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                            </div>
-                            <!-- <div *ngIf="loginForm.controls['password'].errors">
-                                        <small class="text-danger" *ngIf="loginForm.controls['password'].errors.required">Password is required</small>
-                                    </div> -->
+
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                <button type="button" class="btn btn-primary" (click)="EditMusic(idmusic._id)">Xác nhận</button>
+                <button type="button" class="btn btn-primary" (click)="AddMusic()
+                ">Xác nhận</button>
             </div>
         </div>
     </div>
@@ -250,88 +358,80 @@
                 <h5 class="modal-title" id="exampleModalLabel">Cập nhật bài hát</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
-                          </button>
+                        </button>
             </div>
             <div class="modal-body">
-                <form [formGroup]="updateMusicForm" action="">
+                <form [formGroup]="addMusicForm">
                     <div class="cover-form">
                         <div class="cover-input">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Tên bài hát</span>
+                            <div class="row">
+                                <div class="input-group mb-3 col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <label id="inputGroup-sizing-default">Tên bài hát</label>
+                                    </div>
+                                    <input type="text" formControlName="musicName" name="musicName" #musicName class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required="">
                                 </div>
-                                <input type="text" formControlName="musicName" name="musicName" #musicName class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required="">
-                            </div>
-                            <!-- <div *ngIf="loginForm.controls['email'].errors">
-                                                <small class="text-danger" *ngIf="loginForm.controls['email'].errors.required">Email
-                                                            is required</small>
-                                                <small class="text-danger" *ngIf="loginForm.controls['email'].errors.pattern">Email
-                                                            is not match</small>
-                                            </div> -->
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Thể loại</span>
+                                <div class="input-group mb-3 col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <label id="inputGroup-sizing-default">Thể loại</label>
+                                    </div>
+                                    <select formControlName="musicType" name="musicType" #musicType class="form-control" class="where" (change)="getIDType($event)">
+                                                            <option *ngFor="let item of type" [value]="item._id">
+                                                                {{item.nameType}}</option>
+                                                        </select>
                                 </div>
-                                <input type="text" formControlName="musicType" name="musicType" #musicType class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Thể loại</span>
+
+                                <div class="input-group mb-3 col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <label id="inputGroup-sizing-default">Lời bài hát</label>
+                                    </div>
+                                    <input type="text" formControlName="lyrics" name="lyrics" #lyrics class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                                 </div>
-                                <input type="text" formControlName="musicType" name="musicType" #musicType class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Lời bài hát</span>
+
+                                <div class="input-group mb-3 col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <label id="inputGroup-sizing-default">Video/Song</label>
+                                    </div>
+                                    <input type="text" formControlName="isVideo" name="isVideo" #isVideo class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                                 </div>
-                                <input type="text" formControlName="lyrics" name="lyrics" #lyrics class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Lời bài hát</span>
+                                <div class="input-group mb-3 col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <label id="inputGroup-sizing-default">Link bài hát</label>
+                                    </div>
+                                    <input type="file" (change)="getLinkMusic($event)" formControlName="linkMusic" name="linkMusic" #linkMusic class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                                 </div>
-                                <input type="text" formControlName="lyrics" name="lyrics" #lyrics class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Video/Song</span>
+                                <div class="input-group mb-3 col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <label id="inputGroup-sizing-default">Ảnh đại diện</label>
+                                    </div>
+                                    <input type="file" formControlName="image" name="image" #image (change)="getLinkImage($event)" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                                 </div>
-                                <input type="text" formControlName="lyrics" name="lyrics" #lyrics class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Link bài hát</span>
+                                <div class="input-group mb-3 col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <label id="inputGroup-sizing-default">Quốc gia</label>
+                                    </div>
+                                    <input type="text" formControlName="country" name="country" #country class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                                 </div>
-                                <input type="text" formControlName="linkMusic" name="linkMusic" #linkMusic class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Ảnh đại diện</span>
+
+                                <div class="form-group mb-3 col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <label id="inputGroup-sizing-default">Ca sĩ</label>
+                                    </div>
+                                    <select formControlName="singer" name="singer" #singer class="form-control" class="where" (change)="getIDSinger($event)">
+                                                <option *ngFor="let sg of singers" [value]="sg._id">
+                                                    {{sg.singerName}}</option>
+                                            </select>
                                 </div>
-                                <input type="text" formControlName="image" name="image" #image class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                             </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Quốc gia</span>
-                                </div>
-                                <input type="text" formControlName="country" name="country" #country class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Ca sĩ</span>
-                                </div>
-                                <input type="text" formControlName="singer" name="singer" #singer class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-                            </div>
-                            <!-- <div *ngIf="loginForm.controls['password'].errors">
-                                                <small class="text-danger" *ngIf="loginForm.controls['password'].errors.required">Password is required</small>
-                                            </div> -->
+
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                <button type="button" class="btn btn-primary" (click)="EditMusic(idmusic._id)">Xác nhận</button>
+                <button type="button" class="btn btn-primary" (click)="UpdatMusic()
+                        ">Xác nhận</button>
             </div>
         </div>
     </div>
@@ -376,3 +476,58 @@
         </div>
     </div>
 </div>
+
+
+<!-- <div class="modal fade" id="AddType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Thêm nghệ sĩ</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="addSingerForm">
+                    <div class="cover-form">
+                        <div class="cover-input">
+                            <div class="row">
+                                <div class="input-group mb-3 col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <label id="inputGroup-sizing-default">Tên ca sĩ</label>
+                                    </div>
+                                    <input type="text" formControlName="singerName" name="singerName" #singerName class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required="">
+                                </div>
+                                <div class="input-group mb-3 col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <label id="inputGroup-sizing-default">Quốc gia</label>
+                                    </div>
+                                    <input type="text" formControlName="nation" name="nation" #nation class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required="">
+                                </div>
+
+                                <div class="input-group mb-3 col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <label id="inputGroup-sizing-default">Tiểu sử</label>
+                                    </div>
+                                    <input type="text" formControlName="story" name="story" #story class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                                </div>
+                                <div class="input-group mb-3 col-lg-6">
+                                    <div class="input-group-prepend">
+                                        <label id="inputGroup-sizing-default">Ảnh đại diện</label>
+                                    </div>
+                                    <input type="file" formControlName="image" name="image" #image (change)="getLinkAvatarType($event)" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" (click)="AddType()
+                        ">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div> -->

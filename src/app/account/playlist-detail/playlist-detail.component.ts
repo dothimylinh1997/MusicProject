@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MusicsService } from 'src/app/services/musics.service';
+import { ListMusicService } from '../../services/list-music.service';
+
 @Component({
   selector: 'app-playlist-detail',
   templateUrl: './playlist-detail.component.html',
@@ -10,9 +12,12 @@ import { MusicsService } from 'src/app/services/musics.service';
 export class PlaylistDetailComponent implements OnInit {
 nhac;
 music;
+idmusic;
+list;
   constructor( private activatedRoute: ActivatedRoute,
               private MusicsService: MusicsService,
-              private router: Router
+              private router: Router,
+              private listMusicService: ListMusicService
     ) { }
 
   ngOnInit() {
@@ -42,5 +47,28 @@ music;
       }
     }) 
   }
-
+  getIDMusictoDelete(id){
+    console.log(id);
+    this.idmusic = id;
+  }
+  DeleteMusic(id){
+   this.music.map((data)=>{
+     if(data['_id']== id){
+      this.music.splice(this.music.indexOf(data), 1);
+     }
+   })
+   
+  this.listMusicService.getListByID(this.nhac._id).subscribe((data:any) => {
+    this.list={
+      music: this.music
+    }
+    
+    this.listMusicService.updateListMusic(this.nhac._id, this.list).subscribe(ahihi => {
+      this.router.navigate(['/playlist-detail', data['_id']]);
+        setTimeout(()=>{
+        document.location.reload(true)
+        },100)
+    })
+  })
+  }
 }

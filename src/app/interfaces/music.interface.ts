@@ -4,7 +4,7 @@ export interface Music{
     isVideo: string,
     linkMusic: string,
     image: string,
-    comments: string,
+    comment: string,
     singer: string,
     musicType: string
 }

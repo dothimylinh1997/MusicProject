@@ -62,6 +62,17 @@
                             }
                         }
                     }
+                    .button {
+                        .button-delete {
+                            text-align: center;
+                            i {
+                                font-size: 25px;
+                                &:hover {
+                                    color: #6e55b4;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -101,6 +112,17 @@
                         .singer {
                             .singer-name {
                                 color: #a0a0a0;
+                            }
+                        }
+                    }
+                    .button {
+                        margin: auto;
+                        .button-delete {
+                            i {
+                                font-size: 25px;
+                                &:hover {
+                                    color: #6e55b4;
+                                }
                             }
                         }
                     }

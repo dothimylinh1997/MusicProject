@@ -2,10 +2,13 @@ import { Component, OnInit, ViewChild, ElementRef, ChangeDetectorRef } from '@an
 import { MusicsService } from '../services/musics.service';
 import { MusicTempService } from '../services/music-temp.service';
 import { CommentService } from '../services/comment.service';
+import { ListMusicService } from '../services/list-music.service';
 import { Comment } from '../interfaces/comment.interface';
 import { Music } from '../interfaces/music.interface';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
+import { FormGroup, FormControl } from '@angular/forms';
+import { List } from '../interfaces/list.interface';
 
 declare var $: any;
 
@@ -26,19 +29,25 @@ export class SongDetailComponent implements OnInit {
   comments;
   user;
   test;
+  list;
+  idList;
+  id;
+  lists;
   content: Comment;
+  AddLikeMusic: FormGroup;
   @ViewChild('audioOption', { static: false }) audioPlayerRef: ElementRef;
   constructor(private MusicSV: MusicsService,
     private activatedRoute: ActivatedRoute,
     private commentService: CommentService,
     private musicTempService: MusicTempService,
+    private listMusicService: ListMusicService,
     private router: Router
   ) { }
   ngAfterViewInit() {
     this.activatedRoute.params.subscribe(params => {
       this.commentService.getCommnetbyMusic(params['id']).subscribe((dataMusic: any) => {
         this.nhac = dataMusic;
-        console.log(this.nhac);
+        // console.log(this.nhac);
         this.audioPlayerRef.nativeElement.src = this.nhac.linkMusic;
       })
     })
@@ -49,14 +58,9 @@ export class SongDetailComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       this.commentService.getCommnetbyMusic(params['id']).subscribe((dataMusic: any) => {
         this.comments = dataMusic.comment;
-        // console.log(this.comments);
       })
     })
-
-    // this.commentService.getCommentbyUser(this.user._id).subscribe((dataMusic: any) => {
-    //   this.comment = dataMusic.comment;
-    //   console.log(this.comment);
-    // })
+    this.getAllMusicByList();
 
   }
   AddComment(id, id_, cmt) {
@@ -81,6 +85,14 @@ export class SongDetailComponent implements OnInit {
         })
       })
     }
+  }
+
+  getAllMusicByList() {
+    this.user = JSON.parse(`${localStorage.getItem('user')}`);
+    this.listMusicService.getListByUser(this.user._id).subscribe((data: List) => {
+      this.lists = data.listMusic;
+      console.log(this.lists);
+    })
   }
   AddLyrics(id_, lyrics) {
     console.log(lyrics + "\t" + id_);
@@ -110,5 +122,36 @@ export class SongDetailComponent implements OnInit {
       })
     })
     
+  }
+
+  getIDList(id){
+    console.log(id);
+    this.idList = id;
+  }
+  ThemDSYeu(nhac){
+    this.id = this.idList;
+    console.log(this.id);
+    this.list = {
+      music: nhac
+    }
+    console.log(this.list);
+    this.MusicSV.getMusicByList(this.id).subscribe((ahihidata:any) =>{
+      if (!ahihidata.music.some((item) => item._id == nhac._id)) {
+        ahihidata.music.push(nhac);
+        alert("Thêm thành công");
+      }
+      else{
+        alert("Trùng bài hát");
+      }
+      
+      this.listMusicService.updateListMusic(this.id, ahihidata).subscribe(data => {
+        console.log(data);
+
+      });
+    })
+      this.listMusicService.updateListMusic(this.id, this.list).subscribe(data => {
+        console.log(data);
+        $('ThemDSYeu').modal('hide');
+      });
   }
 }

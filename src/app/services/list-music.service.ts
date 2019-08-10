@@ -16,4 +16,11 @@ export class ListMusicService {
   CreateList(List: List): Observable <List>{
     return this.http.post<List>(`http://localhost:5000/list/create`, List);
   }
+  updateListMusic(id: string, List: List): Observable<List>{
+    return this.http.put<List>(`http://localhost:5000/list/${id}`, List);
+  }
+
+  getListByID(id: string): Observable<List> {
+    return this.http.get<any>(`http://localhost:5000/list/${id}`);
+  }
 }
